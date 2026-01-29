@@ -3,7 +3,7 @@ import React from 'react'
 import { getAllPosts } from '@/utils/markdown'
 
 const BlogList: React.FC = () => {
-  const posts = getAllPosts(['title', 'date', 'excerpt', 'coverImage', 'slug'])
+  const posts = getAllPosts(['title', 'date', 'excerpt', 'coverImage', 'slug','blog'])
 
   return (
     <section

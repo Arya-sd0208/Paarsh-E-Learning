@@ -9,13 +9,13 @@ export interface Course {
   galleryImage?: string;
   detailsImage?: string;
   slug: string;
-  description: string;
+  // description: string;
   date?: string;
   price?: string;
 }
 
 const CourseCard = ({ course }: { course: Course }) => {
-  const { name, galleryImage, image, slug, description, date, price } = course;
+  const { name, galleryImage, image, slug, date, price } = course;
   const courseImage = galleryImage || image;
   return (
     <div className="group mb-0 relative bg-white dark:bg-darkmode rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4 flex flex-col h-full">
@@ -48,9 +48,9 @@ const CourseCard = ({ course }: { course: Course }) => {
               {new Date(date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
             </span>
           )}
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+          {/* <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
             {description}
-          </p>
+          </p> */}
         </div>
         <div className="mt-6">
           <Link

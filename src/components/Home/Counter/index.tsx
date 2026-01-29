@@ -488,7 +488,7 @@ const Counter = ({ isColorMode }: { isColorMode: boolean }) => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: 'spring', stiffness: 120 }}
                   >
-                    <CourseCard course={course} isColorMode={isColorMode} />
+                    <CourseCard course={course}  />
                   </motion.div>
                 ))}
               </div>

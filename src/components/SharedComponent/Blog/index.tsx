@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
-import BlogCard from './blogCard'
+// import BlogCard from './blogCard'
 import { getAllPosts } from '@/utils/markdown'
 
 const Blog: React.FC = () => {
@@ -46,7 +46,7 @@ const Blog: React.FC = () => {
               data-aos='fade-up'
               data-aos-delay={`${i * 200}`}
               data-aos-duration='1000'>
-              <BlogCard blog={blog} />
+              {/* <BlogCard blog={blog} /> */}
             </div>
           ))}
         </div>

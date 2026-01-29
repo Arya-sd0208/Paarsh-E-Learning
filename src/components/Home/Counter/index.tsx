@@ -414,7 +414,6 @@ const Counter = ({ isColorMode }: { isColorMode: boolean }) => {
     <section className={isColorMode ? 'bg-section' : 'bg-white'}>
       <div className="container mx-auto max-w-7xl px-2 py-4 sm:py-2 md:py-15 ">
 
-        {/* CATEGORY CARDS */}
         {activeCategory === null && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
             {count.map((item, index) => (
@@ -459,7 +458,6 @@ const Counter = ({ isColorMode }: { isColorMode: boolean }) => {
           </div>
         )}
 
-        {/* COURSES */}
         <AnimatePresence>
           {activeCategory !== null && (
             <motion.div

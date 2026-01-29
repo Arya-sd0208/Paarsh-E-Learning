@@ -57,7 +57,7 @@ const Slides = () => {
 
     return (
         <div
-            className="relative overflow-hidden w-full max-w-6xl mx-auto mb-20 mt-20 h-28 flex items-center"
+            className="relative overflow-hidden w-full max-w-6xl mx-auto mb-10 mt-8 md:mt-20 h-28 flex items-center"
             // className="relative overflow-hidden w-full max-w-6xl mx-auto mb-20 mt-20"
             // className="relative overflow-hidden w-auto mb-20 mt-20 "
             onMouseEnter={() => setTransitionEnabled(false)}
@@ -94,7 +94,7 @@ const Slides = () => {
                             alt={logo.alt}
                             width={(logo.size ?? 1) * 200}
                             height={(logo.size ?? 1) * 70}
-                            className="object-contain"/>
+                            className="object-contain" />
                     </div>
                 ))}
             </div>

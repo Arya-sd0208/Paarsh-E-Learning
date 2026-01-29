@@ -108,7 +108,7 @@ const Hero = () => {
           relative z-10
         "
       >
-        {/* LEFT CONTENT */}
+   
         <div
           className="
             col-span-1 md:col-span-6
@@ -165,7 +165,7 @@ const Hero = () => {
           </a>
         </div>
 
-        {/* RIGHT IMAGE */}
+      
         <div
           className="
             col-span-1 md:col-span-6

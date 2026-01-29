@@ -60,9 +60,7 @@ const page = () => {
 
   return (
     <>
-      {/* <DarkModeToggle /> */}
-
-      {/* About Text  */}
+    
 
       <div className="w-full h-screen mt-10 text-center bg-white text-black dark:bg-[#18181b] dark:text-white transition-colors duration-300">
         <h1 className="text-3xl font-bold font-inter mb-10 spacing-30px text-[#2f73f2] pt-23">
@@ -83,7 +81,6 @@ const page = () => {
       </div>
 
 
-      {/* Mission and Vision Section */}
 
       <section className="bg-gradient-to-b from-blue-50 to-white py-20 mt-40">
         <div className="max-w-7xl mx-auto px-4">
@@ -91,7 +88,7 @@ const page = () => {
 
           <div className="grid lg:grid-cols-2 gap-10">
 
-            {/* Mission Section */}
+        
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-semibold mb-6">Our Mission</h3>
 
@@ -118,7 +115,7 @@ const page = () => {
               </div>
             </div>
 
-            {/* Vision Section */}
+        
             <div className="rounded-2xl shadow-lg p-8 flex flex-col justify-between">
               <h3 className="text-2xl font-semibold mb-6">Our Vision</h3>
 
@@ -134,7 +131,7 @@ const page = () => {
 
 
 
-              {/* Vision Quote */}
+        
               <div className="bg-gray-50 rounded-xl p-6 text-center">
                 <p className="text-xl font-medium leading-relaxed">
                   “To empower individuals worldwide through

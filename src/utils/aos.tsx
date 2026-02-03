@@ -1,18 +1,23 @@
 'use client'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PreLoader from "@/components/Common/PreLoader";
 import AOS from "aos"
 import 'aos/dist/aos.css';
 
-const Aoscompo = ({children}:any) => {
-    useEffect(() => {
-        AOS.init({
-            duration: 800,
-            once: false,
-        })
-    }, [])
+const Aoscompo = ({ children }: any) => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    AOS.init({
+      duration: 800,
+      once: false,
+    })
+  }, [])
   return (
     <div>
-      {children}
+      {loading ? <PreLoader /> : children}
     </div>
   )
 }

@@ -9,8 +9,8 @@ const ContactForm = () => {
       <section className='dark:bg-darkmode md:pb-24 pb-16'>
         <div className='container mx-auto max-w-6xl px-4'>
           <div className='grid md:grid-cols-12 grid-cols-1 gap-8'>
-            <div className='col-span-6'>
-              <h2 className='max-w-72 text-[40px] leading-tight font-bold mb-9 text-[#2F73F2] dark:text-white'>
+            <div className='col-span-6 order-2 md:order-none'>
+              <h2 className='hidden md:block max-w-72 text-[40px] leading-tight font-bold mb-9 text-[#2F73F2] dark:text-white'>
                 Contact Us
               </h2>
               <form className='flex flex-wrap w-full m-auto justify-between'>
@@ -56,9 +56,9 @@ const ContactForm = () => {
                       className='pb-3 inline-block text-base'>
                       Mobile Number
                       <input
-                      type='number'
-                      className='w-full text-base px-4 py-2.5 rounded-lg border-border dark:border-dark_border border-solid dark:text-white  dark:bg-darkmode border transition-all duration-500 focus:border-primary dark:focus:border-primary focus:border-solid focus:outline-0 mt-3'
-                    />
+                        type='number'
+                        className='w-full text-base px-4 py-2.5 rounded-lg border-border dark:border-dark_border border-solid dark:text-white  dark:bg-darkmode border transition-all duration-500 focus:border-primary dark:focus:border-primary focus:border-solid focus:outline-0 mt-3'
+                      />
                     </label>
                     {/* <select className='w-full text-base px-4 py-2.5 rounded-lg border-border dark:text-white border-solid dark:bg-darkmode border transition-all duration-500 focus:border-primary dark:focus:border-primary dark:border-dark_border focus:border-solid focus:outline-0'>
                       <option value=''>Choose a specialist</option>
@@ -93,7 +93,7 @@ const ContactForm = () => {
                     </label>
                     <textarea
                       className='w-full text-base px-4 rounded-lg py-2.5 border-border outline-hidden dark:text-white dark:bg-darkmode border-solid border transition-all duration-500 focus:border-primary dark:focus:border-primary dark:border-dark_border focus:border-solid focus:outline-0'
-                      
+
                       typeof=' text'
                     />
                   </div>
@@ -108,15 +108,14 @@ const ContactForm = () => {
                 </div>
               </form>
             </div>
-            <div className='col-span-6'>
+            <div className='col-span-6 order-1 md:order-none'>
               <Image
                 src={getImgPath('/images/contact-page/contact.png')}
                 alt='Contact'
                 width={400}
                 height={620}
                 quality={100}
-                style={{ width: '400px', height: '600px',marginLeft:"100px",marginTop:'-50px' }}
-                className='bg-no-repeat bg-contain'
+                className='bg-no-repeat bg-contain w-full max-w-[400px] h-auto mx-auto md:ml-[100px] -mt-[50px] md:w-[400px] md:h-[600px]'
               />
             </div>
           </div>

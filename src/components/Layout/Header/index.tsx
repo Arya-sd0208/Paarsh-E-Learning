@@ -153,7 +153,7 @@ const Header: React.FC = () => {
             <div
               ref={signUpRef}
               className='fixed top-0 m-0! left-0 w-full h-full bg-black/50 flex items-center justify-center z-50'>
-              <div className='relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-white px-8 py-14 text-center dark:bg-darklight'>
+              <div className='relative mx-auto w-full max-w-md overflow-hidden rounded-lg bg-white px-8 py-3 text-center dark:bg-darklight'>
                 <button
                   onClick={() => setIsSignUpOpen(false)}
                   className=' hover:bg-gray-200 dark:hover:bg-gray-800 p-1 rounded-full absolute -top-5 -right-3 mr-8 mt-8'

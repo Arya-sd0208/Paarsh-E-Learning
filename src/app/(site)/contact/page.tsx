@@ -31,3 +31,4 @@ const page = () => {
 };
 
 export default page;
+export const revalidate = 60;

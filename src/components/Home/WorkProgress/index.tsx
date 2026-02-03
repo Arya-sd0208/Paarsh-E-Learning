@@ -23,7 +23,7 @@
 //       <div className='container mx-auto max-w-6xl px-4'>
 
 //         <div className='grid md:grid-cols-12 items-center gap-7'>
-          
+
 //           <div className='md:col-span-6'>
 //             <Image
 //               src={getImgPath('/images/work-progress/Image.png')}
@@ -91,36 +91,23 @@ interface ProgressItem {
 const Progresswork = ({ isColorMode }: { isColorMode: Boolean }) => {
   return (
     <section
-      className={`scroll-mt-25 py-12 lg:py-20 ${
-        isColorMode
+      className={`scroll-mt-25 py-12 lg:py-20 ${isColorMode
           ? 'dark:bg-darklight bg-section'
           : 'dark:bg-darkmode bg-white'
-      }`}
-      id='about'
-    >
+        }`}id='about'>
       <div className='container mx-auto max-w-6xl px-4'>
         <div className='grid lg:grid-cols-2 gap-10 items-center'>
 
-         
           <div className='flex justify-center lg:justify-start'>
             <Image
               src={getImgPath('/images/work-progress/Image.png')}
               alt='work progress'
               width={500}
               height={500}
-              quality={100}
-              className='
-                w-full
-                max-w-[280px]
-                sm:max-w-[350px]
-                md:max-w-[420px]
-                lg:max-w-[500px]
-                h-auto
-              '
-            />
+              quality={100}  
+              className='w-full max-w-[280px] sm:max-w-[350px] md:max-w-[420px] lg:max-w-[500px] h-auto' />
           </div>
 
-      
           <div
             data-aos='fade-left'
             data-aos-delay='200'
@@ -137,12 +124,12 @@ const Progresswork = ({ isColorMode }: { isColorMode: Boolean }) => {
               Paarsh E - Learning
             </h2>
 
-            <p className='text-gray dark:text-white/70 text-sm sm:text-base font-semibold'>
+            <p className='text-gray dark:text-white/70 text-sm sm:text-justify font-semibold text-justify tracking-tighter'>
               Paarsh E-Learning delivers industry-focused education through expert mentors and live interactive sessions.
               We combine practical learning, quality resources, and career support to help you achieve real success.
             </p>
 
-            <div className="pt-8">
+            <div className="pt-8 text-justify tracking-tighter">
               <ul className="space-y-4 sm:space-y-5">
                 {points.map((item, index) => (
                   <li key={index} className="flex items-start gap-3 sm:gap-4">

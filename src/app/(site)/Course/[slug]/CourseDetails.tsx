@@ -1,7 +1,7 @@
 // "use client";
 
 // import React, { useEffect, useState } from "react";
-// import { useParams } from "next/navigation";
+// import { useParams, useRouter } from "next/navigation";
 // import Image from "next/image";
 // import { coursesData } from '@/data/coursesData';
 
@@ -245,6 +245,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { coursesData } from "@/data/coursesData";
 
@@ -269,6 +270,7 @@ interface CourseType {
 
 const CourseDetails = ({ slug }: { slug: string }) => {
   const [course, setCourse] = useState<CourseType | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (slug) {
@@ -282,10 +284,16 @@ const CourseDetails = ({ slug }: { slug: string }) => {
   }
 
   return (
-    <div className="w-full bg-white text-gray-800 mt-10">
+    <div className="w-full bg-white text-gray-800 mt-23">
       <section className="bg-[#081738] py-16 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <div>
+          <div className="-mt-15">
+            <button
+              onClick={() => router.back()}
+              className="mb-4 sm:mb-6 px-4 py-2 text-sm sm:text-base bg-gray-200 hover:bg-gray-300 rounded ml-0 md:-ml-24"
+            >
+              ← Back
+            </button>
             <h2 className="text-4xl font-bold text-blue-700 mb-6">{course.name}</h2>
             <p className="text-lg mb-6 text-grey dark:text-white/70">{course.description}</p>
 
@@ -330,9 +338,27 @@ const CourseDetails = ({ slug }: { slug: string }) => {
         </div>
       </section>
 
-      <section className="py-10 max-w-7xl mx-auto mt-5 -mb-10">
-        <h2 className="text-3xl font-semibold mb-4 text-blue-700">Course Overview</h2>
-        <p className="text-lg leading-relaxed">{course.overview}</p>
+      <section className="py-10 max-w-7xl mx-auto mt-5 mb-0 md:-mb-10 px-6">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-700">Course Overview</h2>
+        <p className="text-base md:text-lg leading-relaxed text-justify">{course.overview}</p>
+      </section>
+
+      <section className="py-14 px-6">
+        <div className="max-w-5xl mx-auto">
+          {/* <h2 className="text-3xl font-semibold mb-8 text-blue-700">
+                      Course Preview
+                   </h2>  */}
+          <div className="aspect-w-16 aspect-h-9">
+            <iframe
+              src={course.videoUrl}
+              title="Course Preview"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full rounded-lg shadow-md h-[450px]"
+            ></iframe>
+          </div>
+        </div>
       </section>
 
       <section className="bg-gray-50 py-14 px-6">

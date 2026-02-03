@@ -12,7 +12,7 @@ import Slides from '@/components/SharedComponent/Slides';
 // import Contactform from '@/components/Home/Contact';
 export const metadata: Metadata = {
   title: "Paarsh E - Learning",
-    icons: {
+  icons: {
     icon: '/favicon.png',
   },
 };
@@ -32,3 +32,4 @@ export default function Home() {
     </main>
   )
 }
+  export const revalidate = 60;

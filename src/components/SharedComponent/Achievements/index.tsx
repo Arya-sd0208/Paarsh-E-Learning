@@ -69,18 +69,21 @@ const Index = () => {
     }, []);
 
     return (
-        <section className="py-12 lg:py-20">
-            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <section className="py-12 lg:py-24 relative overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/images/hero/learning.png')" }}>
+            {/* Background Overlay */}
+            <div className="absolute inset-0 bg-blue-900/40 dark:bg-black/80 backdrop-blur-[2px]"></div>
+
+            <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
 
                 <h2 className="
-                    text-2xl
-                    sm:text-3xl
-                    lg:text-4xl
-                    font-bold
+                    text-3xl
+                    sm:text-4xl
+                    lg:text-5xl
+                    font-extrabold
                     text-center
-                    text-[#2F73F2]
-                    dark:text-white
-                    mb-8
+                    text-white
+                    mb-12
+                    drop-shadow-lg
                 ">
                     Our Achievements
                 </h2>
@@ -89,15 +92,15 @@ const Index = () => {
                     max-w-3xl
                     mx-auto
                     text-center
-                    p-5 sm:p-7
-                    shadow-lg
-                    rounded-2xl
-                    border border-gray-100
-                    dark:border-white/10
-                    dark:bg-darkmode
-                    mb-12 lg:mb-16
+                    p-6 sm:p-10
+                    bg-white/10
+                    backdrop-blur-xl
+                    rounded-[2rem]
+                    border border-white/20
+                    shadow-2xl
+                    mb-16 lg:mb-20
                 ">
-                    <p className="text-sm sm:text-base dark:text-white/70">
+                    <p className="text-base sm:text-lg text-white font-medium leading-relaxed">
                         Paarsh E-Learning is a Start-up based Edutech Company from Pune,
                         Nashik & Surat. We provide career-focused courses for students.
                     </p>
@@ -109,8 +112,7 @@ const Index = () => {
                     sm:grid-cols-2
                     lg:grid-cols-4
                     gap-6 lg:gap-10
-                    text-center
-                    ">
+                    text-center">
 
                     {[
                         { target: 1280, label: "Happy Students" },
@@ -121,16 +123,11 @@ const Index = () => {
                         <div
                             key={index}
                             className="
-                                bg-white
-                                dark:bg-darkmode
+                                bg-transparent
                                 rounded-2xl
                                 p-6 sm:p-8
-                                shadow-md
-                                border border-gray-100
-                                dark:border-white/10
                                 transition
                                 duration-300
-                                hover:shadow-xl
                                 hover:-translate-y-2
                             "
                         >
@@ -139,20 +136,21 @@ const Index = () => {
                                 text-3xl
                                 sm:text-4xl
                                 lg:text-5xl
-                                font-bold
-                                text-sky-400
+                                font-black
+                                text-white
                             " data-target={item.target}>
                                 0
                             </h3>
 
-                            <div className="h-1 w-16 sm:w-20 bg-sky-400 mx-auto my-4 rounded"></div>
+                            <div className="h-1.5 w-12 sm:w-16 bg-white mx-auto my-6 rounded-full opacity-60"></div>
 
                             <p className="
                                 uppercase
                                 text-xs
                                 sm:text-sm
-                                tracking-wider
-                                dark:text-white/70
+                                font-bold
+                                tracking-[0.2em]
+                                text-blue-100
                             ">
                                 {item.label}
                             </p>

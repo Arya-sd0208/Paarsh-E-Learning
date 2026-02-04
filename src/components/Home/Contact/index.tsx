@@ -45,7 +45,7 @@ const Contactform = () => {
               <p className='text-white/50 pb-4 text-base'>Trusted by</p>
               <div className='flex items-center flex-wrap md:gap-14 gap-7'>
                 <Image
-                  src={getImgPath('/images/contact/google-pay.png')}
+                  src={getImgPath('/images/contact/contact1.png')}
                   alt='Google-pay'
                   width={100}
                   height={20}

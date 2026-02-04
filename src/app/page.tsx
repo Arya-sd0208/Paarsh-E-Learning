@@ -5,6 +5,7 @@ import Counter from '@/components/Home/Counter'
 import Progresswork from '@/components/Home/WorkProgress';
 import Services from '@/components/Home/Services';
 import Testimonial from '@/components/SharedComponent/Testimonial'
+import StudentReviews from '@/components/Home/StudentReviews';
 import Achievements from '@/components/SharedComponent/Achievements'
 import Slides from '@/components/SharedComponent/Slides';
 // import { coursesData } from '@/data/coursesData';
@@ -26,10 +27,11 @@ export default function Home() {
       <Services />
       <Achievements />
       <Testimonial />
+      <StudentReviews />
       <Slides />
       {/* <Blog /> */}
       {/* <Contactform /> */}
     </main>
   )
 }
-  export const revalidate = 60;
+export const revalidate = 60;

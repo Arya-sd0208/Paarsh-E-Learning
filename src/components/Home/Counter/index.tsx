@@ -377,28 +377,28 @@ import CourseCard from '@/components/SharedComponent/Course/CourseCard'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const courseData = [
-  { id: 1, name: 'Full Stack Development', image: '/images/course/fullstack.png', slug: 'full-stack' },
-  { id: 2, name: 'MERN Stack Development', image: '/images/course/mern.png', slug: 'mern-stack' },
-  { id: 3, name: 'Python Programming', image: '/images/course/python.png', slug: 'python-programming' },
-  { id: 4, name: 'Data Science', image: '/images/course/data.jpg', slug: 'data-science' },
-  { id: 5, name: 'Artificial Intelligence (AI)', image: '/images/course/ai.jpg', slug: 'ai' },
-  { id: 6, name: 'Machine Learning', image: '/images/course/machine.png', slug: 'machine-learning' },
-  { id: 7, name: 'Generative AI', image: '/images/course/generative.png', slug: 'generative-ai' },
-  { id: 8, name: 'Cloud Computing (AWS)', image: '/images/course/cloud.jpg', slug: 'aws' },
-  { id: 9, name: 'DevOps', image: '/images/course/devops.jpg', slug: 'devops' },
-  { id: 10, name: 'C Language', image: '/images/course/c.jpg', slug: 'c-language' },
-  { id: 11, name: 'C++ Language', image: '/images/course/cpp.jpg', slug: 'cpp-language' },
-  { id: 12, name: 'Java Programming', image: '/images/course/java.jpg', slug: 'java-programming' },
-  { id: 13, name: 'Java Full Stack Development', image: '/images/course/javafullstack.jpg', slug: 'java-full-stack' },
-  { id: 14, name: 'Python Full Stack Development', image: '/images/course/pythonfull.webp', slug: 'python-full-stack' },
-  { id: 15, name: 'Front-End Development (React)', image: '/images/course/react.jpg', slug: 'front-end-development-react' },
-  { id: 16, name: 'Back-End Development', image: '/images/course/backend.jpg', slug: 'back-end-development' },
-  { id: 17, name: 'Mobile App Development (Android / iOS)', image: '/images/course/mobile.jpg', slug: 'mobile-app-development-android-ios' },
-  { id: 18, name: 'Flutter Development', image: '/images/course/flutterpng.png', slug: 'flutter-development' },
-  { id: 19, name: 'Data Analytics', image: '/images/course/data-analytics.jpg', slug: 'data-analytics' },
-  { id: 20, name: 'Cyber Security', image: '/images/course/cyber.jpg', slug: 'cyber-security' },
-  { id: 21, name: 'Ethical Hacking', image: '/images/course/ethical.jpg', slug: 'ethical-hacking' },
-  { id: 22, name: 'UI/UX Design', image: '/images/course/download.jpg', slug: 'ui-ux-design' },
+  { id: 1, name: 'Full Stack Development', image: '/images/course/fullstack.png', slug: 'full-stack', rating: 4.8, description: 'Master both frontend and backend technologies.', duration: '6 Months' },
+  { id: 2, name: 'MERN Stack Development', image: '/images/course/mern.png', slug: 'mern-stack', rating: 4.7, description: 'Build modern apps with MongoDB, Express, React, and Node.', duration: '4 Months' },
+  { id: 3, name: 'Python Programming', image: '/images/course/python.png', slug: 'python-programming', rating: 4.9, description: 'Learn Python from basics to advanced levels.', duration: '2 Months' },
+  { id: 4, name: 'Data Science', image: '/images/course/data.jpg', slug: 'data-science', rating: 4.6, description: 'Analyze data and derive insights using top tools.', duration: '5 Months' },
+  { id: 5, name: 'Artificial Intelligence (AI)', image: '/images/course/ai.jpg', slug: 'ai', rating: 4.8, description: 'Explore the future with AI and machine learning.', duration: '6 Months' },
+  { id: 6, name: 'Machine Learning', image: '/images/course/machine.png', slug: 'machine-learning', rating: 4.7, description: 'Build intelligent systems that learn from data.', duration: '4 Months' },
+  { id: 7, name: 'Generative AI', image: '/images/course/generative.png', slug: 'generative-ai', rating: 4.9, description: 'Create content and models with state-of-the-art AI.', duration: '3 Months' },
+  { id: 8, name: 'Cloud Computing (AWS)', image: '/images/course/cloud.jpg', slug: 'aws', rating: 4.5, description: 'Master the leading cloud services platform.', duration: '3 Months' },
+  { id: 9, name: 'DevOps', image: '/images/course/devops.jpg', slug: 'devops', rating: 4.7, description: 'Bridge the gap between development and operations.', duration: '4 Months' },
+  { id: 10, name: 'C Language', image: '/images/course/c.jpg', slug: 'c-language', rating: 4.4, description: 'Build a strong foundation in low-level programming.', duration: '1 Month' },
+  { id: 11, name: 'C++ Language', image: '/images/course/cpp.jpg', slug: 'cpp-language', rating: 4.5, description: 'Learn object-oriented programming with C++.', duration: '2 Months' },
+  { id: 12, name: 'Java Programming', image: '/images/course/java.jpg', slug: 'java-programming', rating: 4.6, description: 'Master Java for enterprise-grade applications.', duration: '3 Months' },
+  { id: 13, name: 'Java Full Stack Development', image: '/images/course/javafullstack.jpg', slug: 'java-full-stack', rating: 4.8, description: 'Comprehensive Java stack for full-scale projects.', duration: '6 Months' },
+  { id: 14, name: 'Python Full Stack Development', image: '/images/course/pythonfull.webp', slug: 'python-full-stack', rating: 4.7, description: 'Build complete applications using Python and Django/Flask.', duration: '6 Months' },
+  { id: 15, name: 'Front-End Development (React)', image: '/images/course/react.jpg', slug: 'front-end-development-react', rating: 4.9, description: 'Create highly interactive UIs with React.', duration: '3 Months' },
+  { id: 16, name: 'Back-End Development', image: '/images/course/backend.jpg', slug: 'back-end-development', rating: 4.7, description: 'Focus on databases, servers, and business logic.', duration: '3 Months' },
+  { id: 17, name: 'Mobile App Development (Android / iOS)', image: '/images/course/mobile.jpg', slug: 'mobile-app-development-android-ios', rating: 4.6, description: 'Build native and cross-platform mobile apps.', duration: '4 Months' },
+  { id: 18, name: 'Flutter Development', image: '/images/course/flutterpng.png', slug: 'flutter-development', rating: 4.8, description: 'Create stunning apps for mobile, web, and desktop.', duration: '3 Months' },
+  { id: 19, name: 'Data Analytics', image: '/images/course/data-analytics.jpg', slug: 'data-analytics', rating: 4.7, description: 'Transform raw data into actionable business insights.', duration: '3 Months' },
+  { id: 20, name: 'Cyber Security', image: '/images/course/cyber.jpg', slug: 'cyber-security', rating: 4.8, description: 'Learn to protect networks and systems from threats.', duration: '4 Months' },
+  { id: 21, name: 'Ethical Hacking', image: '/images/course/ethical.jpg', slug: 'ethical-hacking', rating: 4.9, description: 'Identify vulnerabilities and secure systems responsibly.', duration: '3 Months' },
+  { id: 22, name: 'UI/UX Design', image: '/images/course/download.jpg', slug: 'ui-ux-design', rating: 4.7, description: 'Craft exceptional user experiences and visuals.', duration: '2 Months' },
 ]
 
 const categoryCourses = [
@@ -412,85 +412,116 @@ const Counter = ({ isColorMode }: { isColorMode: boolean }) => {
 
   return (
     <section className={isColorMode ? 'bg-section' : 'bg-white'}>
-      <div className="container mx-auto max-w-7xl px-2 py-4 sm:py-2 md:py-15 ">
+      <div className="container mx-auto max-w-7xl px-4 py-8 md:py-16">
 
-        {activeCategory === null && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
-            {count.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => setActiveCategory(index)}
-                className="group relative cursor-pointer p-5 sm:p-6 md:p-8 rounded-xl border shadow-md"
-              >
-                <span
+        <AnimatePresence mode='wait'>
+          {activeCategory === null ? (
+            <motion.div
+              key="categories"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {count.map((item, index) => (
+                <div
+                  key={index}
+                  onClick={() => setActiveCategory(index)}
                   className="
-                    absolute bottom-0 right-0
-                    w-0 h-0
-                    bg-blue-600/15
-                    rounded-tl-[100%]
-                    group-hover:w-[75%]
-                    group-hover:h-[75%]
-                    transition-all duration-500 ease-out
-                  "
-                />
+                        group relative cursor-pointer p-8 rounded-2xl 
+                        bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700
+                        shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1
+                    "
+                >
+                  <div className="absolute inset-0 bg-blue-600/5 rounded-2xl transform scale-0 group-hover:scale-100 transition-transform duration-500 rounded-br-[100px]" />
 
-                <div className="relative z-10">
-                  <div className="flex justify-center items-center">
-                    <Image
-                      src={item.icon}
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="transition-transform duration-300 group-hover:scale-110"
-                    />
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        width={40}
+                        height={40}
+                        className="w-10 h-10"
+                      />
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 text-center">
+                      {item.value}
+                    </h3>
+
+                    <p className="text-gray-500 dark:text-gray-400 text-center leading-relaxed">
+                      {item.description || "Discover courses tailored for this category."}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="active-view"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+              className="relative w-full overflow-hidden"
+            >
+              <div className="bg-gradient-to-br from-blue-900 via-indigo-200 to-white rounded-3xl p-4 md:p-6 flex flex-col lg:flex-row gap-6 lg:gap-10  overflow-y-hidden overflow-x-hidden relative  max-h-[600px] lg:max-h-[550px]">
+                {/* Background Decoration */}
+                <div className="absolute top-0 right-0 w-96 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-96 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
+                {/* Left Panel */}
+                <div className="lg:w-1/3 flex flex-col justify-center z-10 space-y-6">
+                  <div className="space-y-4">
+                    <span className="inline-block px-4 py-1.5 bg-blue-500 rounded-full text-sm font-semibold border border-blue-900/10 backdrop-blur-sm text-white">
+                      Featured Collection
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-bold leading-tight text-blue-950">
+                      {count[activeCategory].value}
+                    </h2>
+                    <p className="text-blue-900/80 text-lg leading-relaxed max-w-md">
+                      Explore our hand-picked selection of top courses in {count[activeCategory].value}. Level up your skills today!
+                    </p>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-semibold mt-4 text-center text-gray-800">
-                    {item.value}
-                  </h3>
-
-                  <p className="text-sm text-gray-500 mt-2 text-center">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <AnimatePresence>
-          {activeCategory !== null && (
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-            >
-              <button
-                onClick={() => setActiveCategory(null)}
-                className="mb-4 sm:mb-6 px-4 py-2 text-sm sm:text-base bg-gray-200 hover:bg-gray-300 rounded"
-              >
-                ← Back
-              </button>
-
-              <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-3 snap-x snap-mandatory">
-                {categoryCourses[activeCategory].map(course => (
-                  <motion.div
-                    key={course.id}
+                  <button
+                    onClick={() => setActiveCategory(null)}
                     className="
-                      snap-start
-                      min-w-[260px] max-w-[260px]
-                      sm:min-w-[300px] sm:max-w-[300px]
-                      md:min-w-[340px] md:max-w-[340px]
-                      lg:min-w-[380px] lg:max-w-[380px]
-                    "
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 120 }}
+                            group flex items-center gap-3 px-8 py-4 bg-blue-900 text-white 
+                            rounded-xl font-bold text-lg shadow-lg shadow-blue-900/20
+                            hover:bg-blue-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-fit
+                        "
                   >
-                    <CourseCard course={course}  />
-                  </motion.div>
-                ))}
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 group-hover:-translate-x-1 transition-transform">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                    <span>Back to Categories</span>
+                  </button>
+                </div>
+
+                {/* Right Scrollable Panel - Restored Slider with Reduced Scale */}
+                <div className="lg:w-2/3 relative z-10 flex items-center">
+                  <div className="flex gap-4 sm:gap-5 overflow-x-auto pb-3 snap-x snap-mandatory w-full scrollbar-hide">
+                    {categoryCourses[activeCategory]?.map(course => (
+                      <motion.div
+                        key={course.id}
+                        className="
+                            snap-start
+                            min-w-[240px] max-w-[240px]
+                            sm:min-w-[280px] sm:max-w-[280px]
+                            md:min-w-[310px] md:max-w-[310px]
+                            lg:min-w-[330px] lg:max-w-[330px]
+                            "
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: 'spring', stiffness: 120 }}
+                      >
+                        <CourseCard course={course} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           )}

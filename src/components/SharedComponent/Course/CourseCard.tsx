@@ -1,6 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Icon } from "@iconify/react";
+
+import { FaStar, FaClock } from "react-icons/fa6";
 
 export interface Course {
   id: number;
@@ -9,55 +12,77 @@ export interface Course {
   galleryImage?: string;
   detailsImage?: string;
   slug: string;
-  // description: string;
+  description: string;
   date?: string;
   price?: string;
+  rating?: number;
+  duration?: string;
+  level?: string;
+  mode?: string;
 }
 
 const CourseCard = ({ course }: { course: Course }) => {
-  const { name, galleryImage, image, slug, date, price } = course;
+  const { name, galleryImage, image, slug, description, duration, level, mode, rating } = course;
   const courseImage = galleryImage || image;
   return (
-    <div className="group mb-0 relative bg-white dark:bg-darkmode rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4 flex flex-col h-full">
-      <div className="mb-8 overflow-hidden rounded-sm">
-        <Link href={`/Course/${slug}`} aria-label="course cover" className="block">
+    <div className="group bg-white dark:bg-darkmode rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-gray-100 dark:border-gray-800">
+      {/* Course Image */}
+      <div className="relative aspect-[16/9] overflow-hidden">
+        <Link href={`/Course/${slug}`} className="block w-full h-full">
           <Image
             src={courseImage}
             alt={name}
-            className="w-full transition group-hover:scale-125"
-            width={408}
-            height={272}
-            style={{ width: '350px', height: '250px' }}
+            className="transition-transform duration-500 group-hover:scale-110 object-cover w-full h-full"
+            fill
             quality={100}
             unoptimized
           />
         </Link>
       </div>
-      <div className="flex-1 flex flex-col justify-between">
-        <div>
-          <h3>
-            <Link
-              href={`/Course/${slug}`}
-              className="mb-4 inline-block font-semibold text-dark text-black hover:text-primary dark:text-white dark:hover:text-primary text-[22px] leading-tight"
-            >
-              {name}
-            </Link>
-          </h3>
-          {date && (
-            <span className="text-sm font-semibold leading-loose text-SereneGray">
-              {new Date(date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
-            </span>
-          )}
-          {/* <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-            {description}
-          </p> */}
-        </div>
-        <div className="mt-6">
+
+      {/* Course Content */}
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="mb-1.5">
           <Link
             href={`/Course/${slug}`}
-            className="block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium rounded-md transition-colors"
+            className="font-bold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400 text-base md:text-lg leading-tight transition-colors line-clamp-1"
           >
-            View More
+            {name}
+          </Link>
+        </h3>
+
+        <p className="text-xs text-gray-500 dark:text-gray-400 mb-3 line-clamp-2">
+          {description}
+        </p>
+
+        {/* Course Meta */}
+        <div className="flex items-center gap-3 text-[12px] font-medium text-gray-600 dark:text-gray-400 mb-3 border-t border-gray-50 dark:border-gray-800 pt-3">
+          <div className="flex items-center gap-1.5">
+            <Icon icon="solar:clock-circle-linear" className="w-3.5 h-3.5 text-blue-600" />
+            <span>{duration || "8 Weeks"}</span>
+          </div>
+          <span className="text-gray-300">|</span>
+          <span>{level || "Beginner"}</span>
+          <span className="text-gray-300">|</span>
+          <span>{mode || "Self-Paced"}</span>
+        </div>
+
+        {/* Footer: Rating & Button */}
+        <div className="mt-auto flex items-center justify-between">
+          <div className="flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <FaStar
+                key={i}
+                className={`w-3.5 h-3.5 ${i < Math.floor(rating || 5) ? 'text-yellow-400' : 'text-gray-300'}`}
+              />
+            ))}
+          </div>
+
+          <Link
+            href={`/Course/${slug}`}
+            className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-lg transition-all shadow-md shadow-blue-200 dark:shadow-none hover:translate-y-[-2px]"
+          >
+            View Details
           </Link>
         </div>
       </div>

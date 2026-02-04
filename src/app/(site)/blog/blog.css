@@ -43,29 +43,7 @@
   line-height: 1.4;
 }
 
-.blog-detail {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 0 20px;
-}
-
-.blog-detail h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-   text-align: center;
-}
-
-.blog-detail img {
-  width: 100%;
-  border-radius: 14px;
-  margin: 20px 0 30px;
-}
-
-.blog-detail p {
-  font-size: 16px;
-  color: #444;
-  text-align: justify;
-}
+/* Old blog-detail styles removed as they are now handled by Tailwind CSS in BlogDetail.tsx */
 
 @media (max-width: 1024px) {
   .blog-gallery {

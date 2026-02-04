@@ -67,12 +67,12 @@ const Testimonial = () => {
     >
       <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
 
-        <h2
-          className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F73F2] text-center dark:text-white mb-10 lg:mb-16'
-          data-aos='fade-up'
-        >
-          Our Benefits
-        </h2>
+        <div className="text-center mb-16 md:mb-24">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-blue-950 dark:text-white mb-6">
+            Our Benefits
+          </h2>
+          <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full" />
+        </div>
 
 
         <div className='grid lg:grid-cols-2 gap-10 items-center'>
@@ -97,7 +97,7 @@ const Testimonial = () => {
             />
           </div>
 
-          
+
           <ul className='order-2 lg:order-1 space-y-5'>
             {achievements.map((item, index) => (
               <li

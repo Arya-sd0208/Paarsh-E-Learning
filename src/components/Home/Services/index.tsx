@@ -80,13 +80,12 @@ const Services = () => {
     <section className='bg-section dark:bg-darklight py-12 lg:py-20' id='services'>
       <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
 
-        <h2
-          className='text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F73F2] text-center dark:text-white mb-12 lg:mb-16'
-          data-aos='fade-up'
-          data-aos-delay='200'
-          data-aos-duration='1000'>
-          Strategies for Students
-        </h2>
+         <div className="text-center mb-16 md:mb-24">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-blue-950 dark:text-white mb-6">
+                        Strategies for Students
+                    </h2>
+                    <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full" />
+                </div>
 
         <div className='lg:hidden flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-2 no-scrollbar pb-4 text-justify'>
           {Servicebox.map((item, index) => (

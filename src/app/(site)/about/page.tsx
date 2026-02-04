@@ -75,7 +75,6 @@ const AboutPage = () => {
             <p className="text-left font-bold border-t border-gray-100 dark:border-white/10 pt-10 mt-10">Sincerely,</p>
             <p className="text-left mb-10 text-blue-600 font-bold">The Paarsh E-Learning Team</p>
 
-            {/* Fade Effect Overlay */}
             {!isAboutExpanded && (
               <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#18181b] dark:via-[#18181b]/80 z-20" />
             )}
@@ -95,53 +94,75 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <section className="bg-gradient-to-b from-blue-50 to-white py-20 mt-20 md:mt-40">
+      <section className="py-20 bg-[#f9fbff] dark:bg-[#1f1f27]">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-10">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-semibold mb-6">Our Mission</h3>
-              <div className="space-y-5">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+
+            {/* Our Mission - Left Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-[30px] p-8 md:p-12 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-50 dark:border-white/5 flex flex-col">
+              <h3 className="text-3xl font-black text-blue-950 dark:text-white mb-10 flex items-center gap-4">
+                Our Mission
+                <div className="h-1 flex-1 bg-gray-100 dark:bg-white/10 rounded-full" />
+              </h3>
+
+              <div className="space-y-6 flex-1">
                 {missions.map((item, index) => (
-                  <div key={index} className="flex gap-4 p-4 rounded-xl bg-gray-50 hover:bg-blue-50 transition">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-white shadow">
+                  <div key={index} className="flex gap-5 p-4 rounded-2xl hover:bg-blue-50/50 dark:hover:bg-white/5 transition-all group">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-gray-900 shadow-sm group-hover:bg-white dark:group-hover:bg-blue-600 group-hover:shadow-md transition-all">
                       {item.icon}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg">{item.title}</h4>
-                      <p className="text-sm text-gray-600">{item.desc}</p>
+                      <h4 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">{item.title}</h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 transition-colors">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl shadow-lg p-8 flex flex-col justify-between">
-              <h3 className="text-2xl font-semibold mb-6">Our Vision</h3>
-              <div className="w-full flex justify-center h-[250px]">
-                <Image src="/about/Gemini.png" alt="Our Vision" width={700} height={450} className="w-full max-w-md h-auto rounded-xl" />
+            {/* Our Vision - Right Card */}
+            <div className="bg-white dark:bg-gray-800 rounded-[30px] p-8 md:p-12 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-50 dark:border-white/5 flex flex-col items-center">
+              <h3 className="text-3xl font-black text-blue-950 dark:text-white mb-10 self-start flex items-center gap-4 w-full">
+                Our Vision
+                <div className="h-1 flex-1 bg-gray-100 dark:bg-white/10 rounded-full" />
+              </h3>
+
+              <div className="w-full max-w-[400px] mb-10 group">
+                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl group-hover:scale-[1.02] transition-transform duration-500">
+                  <Image src="/images/contact-page/Working.png" alt="Vision" fill className="object-contain p-6" />
+                </div>
               </div>
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
-                <p className="text-xl font-medium leading-relaxed">
+
+              <div className="text-center mb-10">
+                <p className="text-xl md:text-2xl font-black text-blue-900 dark:text-blue-400 leading-tight">
                   “To empower individuals worldwide through
-                  <span className="text-blue-600 font-semibold"> accessible and innovative </span>
+                  <span className="text-blue-600 decoration-blue-600/30 decoration-4 underline-offset-4 decoration-skip-ink-none"> accessible and innovative </span>
                   learning.”
                 </p>
-                <div className="grid grid-cols-3 gap-4 mt-6 text-sm">
-                  <div className="flex flex-col items-center gap-1">
-                    <Globe className="text-blue-600" />
-                    <span>Global Learning</span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-6 w-full pt-8 border-t border-gray-100 dark:border-white/10 mt-auto">
+                <div className="flex flex-col items-center gap-2 group cursor-pointer">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                    <Globe size={24} />
                   </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <BarChart3 className="text-green-600" />
-                    <span>Career Growth</span>
+                  <span className="text-xs font-bold text-gray-400 group-hover:text-blue-600 transition-colors uppercase tracking-widest text-center">Global<br />Learning</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 group cursor-pointer">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-green-50 dark:bg-green-900/30 text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
+                    <BarChart3 size={24} />
                   </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <Lightbulb className="text-yellow-500" />
-                    <span>Innovation First</span>
+                  <span className="text-xs font-bold text-gray-400 group-hover:text-green-600 transition-colors uppercase tracking-widest text-center">Career<br />Growth</span>
+                </div>
+                <div className="flex flex-col items-center gap-2 group cursor-pointer">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-yellow-50 dark:bg-yellow-900/30 text-yellow-600 group-hover:bg-yellow-600 group-hover:text-white transition-all">
+                    <Lightbulb size={24} />
                   </div>
+                  <span className="text-xs font-bold text-gray-400 group-hover:text-yellow-600 transition-colors uppercase tracking-widest text-center">Innovation<br />First</span>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -178,7 +199,6 @@ const AboutPage = () => {
                 As the Founder and CEO, Tushar Pagare brings a unique blend of visionary thinking, strategic acumen, and a genuine passion for education to Paarsh E-Learning. With his leadership, the platform continues to expand its reach, making a lasting impact on the lives of learners worldwide.
               </p>
 
-              {/* Fade Effect Overlay */}
               {!isFounderExpanded && (
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-gray-900 dark:via-gray-900/80 z-20" />
               )}

@@ -51,8 +51,7 @@ const Contactform = () => {
                   height={20}
                   style={{ width: 'auto', height: 'auto' }}
                   quality={100}
-                  className='w_f max-w-28 w-full h-5'
-                />
+                  className='w_f max-w-28 w-full h-5'/>
                 <Image
                   src={getImgPath('/images/contact/play-juction.png')}
                   alt='play-juction'
@@ -60,8 +59,7 @@ const Contactform = () => {
                   height={20}
                   style={{ width: 'auto', height: 'auto' }}
                   quality={100}
-                  className='w_f max-w-24 w-full h-6'
-                />
+                  className='w_f max-w-24 w-full h-6'/>
                 <Image
                   src={getImgPath('/images/contact/stripe.png')}
                   alt='stripe'
@@ -69,8 +67,7 @@ const Contactform = () => {
                   height={20}
                   style={{ width: 'auto', height: 'auto' }}
                   quality={100}
-                  className='w_f max-w-14 w-full h-6'
-                />
+                  className='w_f max-w-14 w-full h-6'/>
                 <Image
                   src={getImgPath('/images/contact/wise.png')}
                   alt='wise'
@@ -78,8 +75,7 @@ const Contactform = () => {
                   height={20}
                   style={{ width: 'auto', height: 'auto' }}
                   quality={100}
-                  className='w_f max-w-16 w-full h-4'
-                />
+                  className='w_f max-w-16 w-full h-4'/>
               </div>
             </div>
           </div>
@@ -97,27 +93,23 @@ const Contactform = () => {
                   <input
                     className='text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-border border-solid focus:border-primary dark:focus:border-primary placeholder:text-grey rounded-lg focus-visible:outline-0'
                     type='text'
-                    placeholder='First name'
-                  />
+                    placeholder='First name'/>
                   <input
                     type='text'
                     className='text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-border border-solid focus:border-primary dark:focus:border-primary placeholder:text-grey rounded-lg focus-visible:outline-0'
-                    placeholder='Last name'
-                  />
+                    placeholder='Last name'/>
                 </div>
                 <div className='w-full'>
                   <input
                     type='email'
                     className='text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-border border-solid focus:border-primary dark:focus:border-primary placeholder:text-grey rounded-lg focus-visible:outline-0'
-                    placeholder='youremail@website.com'
-                  />
+                    placeholder='youremail@website.com'/>
                 </div>
                 <div className='w-full'>
                   <input
                     className='text-midnight_text w-full text-base transition-[0.5s] bg-transparent dark:border-dark_border dark:text-white px-[0.9375rem] py-[0.830rem] border border-border border-solid focus:border-primary dark:focus:border-primary placeholder:text-grey rounded-lg focus-visible:outline-0'
                     type='text'
-                    placeholder='Country'
-                  />
+                    placeholder='Country'/>
                 </div>
                 <div className='w-full'>
                   <textarea
@@ -138,7 +130,7 @@ const Contactform = () => {
                       Terms and Conditions{' '}
                     </p>
                   </div>
-                </div>
+                </div>  
                 <div className='w-full'>
                   <button
                     className='w-full bg-primary hover:bg-blue-700 text-white py-3 rounded-lg'

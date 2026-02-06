@@ -9,18 +9,18 @@ const Logo: React.FC = () => {
       <Image
         src={getImgPath("/images/logo/logo-wide.webp")}
         alt="logo"
-        width={230}
-        height={60}
-        style={{ width: '230px', height: 'auto' }}
+        width={180}
+        height={72}
+        style={{ width: '180px', height: 'auto' }}
         quality={100}
         className='dark:hidden'
       />
       <Image
         src={getImgPath("/images/logo/logo-wide.webp")}
         alt="logo"
-        width={230}
-        height={60}
-        style={{ width: '230px', height: 'auto' }}
+        width={180}
+        height={72}
+        style={{ width: '180px', height: 'auto' }}
         quality={100}
         className='dark:block hidden'
       />

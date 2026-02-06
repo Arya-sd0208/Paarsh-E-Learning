@@ -38,7 +38,7 @@ const BlogDetail = () => {
         <section className="bg-white min-h-screen pt-32 pb-12 px-4 md:px-8 lg:px-16">
             <div className="max-w-[1240px] mx-auto">
 
-                <nav className="flex items-center gap-2 mb-8 text-sm font-medium">
+                <nav className="flex items-center gap-2 mb-8 text-sm ">
                     <Link
                         href="/"
                         className="flex items-center gap-1.5 text-gray-500 hover:text-blue-600 transition-colors">

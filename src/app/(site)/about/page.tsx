@@ -26,27 +26,27 @@ const AboutPage = () => {
 
   const missions = [
     {
-      icon: <GraduationCap className="text-blue-600" />,
+      icon: <GraduationCap size={24} />,
       title: "High-Quality Education",
       desc: "Deliver industry-relevant courses designed by experts."
     },
     {
-      icon: <Globe className="text-green-600" />,
+      icon: <Globe size={24} />,
       title: "Foster Accessibility",
       desc: "Make learning accessible worldwide with flexible options."
     },
     {
-      icon: <BookOpen className="text-purple-600" />,
+      icon: <BookOpen size={24} />,
       title: "Promote Lifelong Learning",
       desc: "Empower learners to continuously upgrade their skills."
     },
     {
-      icon: <Briefcase className="text-orange-600" />,
+      icon: <Briefcase size={24} />,
       title: "Facilitate Job Placement",
       desc: "Bridge learning and employment with placement assistance."
     },
     {
-      icon: <Rocket className="text-pink-600" />,
+      icon: <Rocket size={24} />,
       title: "Embrace Innovation & Technology",
       desc: "Adopt latest technologies for engaging learning experiences."
     }
@@ -54,12 +54,12 @@ const AboutPage = () => {
 
   return (
     <>
-      <div className="w-full mt-10 text-center bg-white text-black dark:bg-[#18181b] dark:text-white transition-colors duration-300 relative overflow-hidden">
+      <div className="w-full mt-10 text-center bg-white text-primary dark:bg-[#18181b] dark:text-white transition-colors duration-300 relative overflow-hidden">
         <div className="text-center mb-16 md:mb-10 mt-20">
           <h2 className="text-4xl md:text-5xl font-extrabold text-blue-950 dark:text-white mb-6">
             About Us
           </h2>
-          <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full" />
+          <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full" />
         </div>
 
         <div className="about-text dark:bg-transparent tracking-tighter mx-auto max-w-6xl relative z-10">
@@ -72,8 +72,8 @@ const AboutPage = () => {
             <p>With Paarsh E-Learning, you can access your courses at your convenience, allowing you to learn at your own pace and from any location. Our user-friendly platform provides seamless navigation, interactive resources, and a range of multimedia content to enhance your learning experience. We believe that education should be enjoyable and immersive, and we continuously strive to provide you with the best learning environment possible.</p>
             <p>Join us at Paarsh E-Learning and embark on a transformative educational journey. Whether you're looking to acquire new skills, enhance your career prospects, or simply pursue a passion, we are here to support you every step of the way. Explore our courses, engage with our community, and unlock your full potential with Paarsh E-Learning.</p>
             <p>We look forward to having you on board!</p>
-            <p className="text-left font-bold border-t border-gray-100 dark:border-white/10 pt-10 mt-10">Sincerely,</p>
-            <p className="text-left mb-10 text-blue-600 font-bold">The Paarsh E-Learning Team</p>
+            <p className="text-left font-bold border-t border-gray-100 dark:border-white/10 pt-10 mt-1">Sincerely,</p>
+            <p className="text-left mb-5 text-secondary font-bold">The Paarsh E-Learning Team</p>
 
             {!isAboutExpanded && (
               <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#18181b] dark:via-[#18181b]/80 z-20" />
@@ -83,37 +83,62 @@ const AboutPage = () => {
           <div className="mt-[-25px] relative z-30 pb-10">
             <button
               onClick={() => setIsAboutExpanded(!isAboutExpanded)}
-              className="flex items-center justify-center gap-2 mx-auto px-8 py-3 rounded-full bg-white dark:bg-gray-800 border border-blue-500/30 text-blue-600 font-bold shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 group"
+              className="flex items-center justify-center gap-2 mx-auto px-8 py-3 rounded-full bg-white dark:bg-gray-800 border border-blue-500/30 text-primary font-bold shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 group"
             >
-              <span className="group-hover:text-blue-700">{isAboutExpanded ? "Read Less" : "Read More"}</span>
+              <span className="group-hover:text-secondary">{isAboutExpanded ? "Read Less" : "Read More"}</span>
               <div className={`transition-transform duration-300 ${isAboutExpanded ? 'rotate-180' : ''}`}>
-                <ChevronDown size={20} className="text-blue-500" />
+                <ChevronDown size={20} className="text-primary" />
               </div>
             </button>
           </div>
         </div>
       </div>
 
-      <section className="py-20 bg-[#f9fbff] dark:bg-[#1f1f27]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+      <section className="py-32 bg-[#f9fbff] dark:bg-[#1f1f27]">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-4 items-stretch">
 
             {/* Our Mission - Left Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-[30px] p-8 md:p-12 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-50 dark:border-white/5 flex flex-col">
-              <h3 className="text-3xl font-black text-blue-950 dark:text-white mb-10 flex items-center gap-4">
+            <div className="bg-white dark:bg-gray-800 rounded-[30px] p-6 md:p-10 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-50 dark:border-white/5 flex flex-col group/missionCard transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/5 min-h-[620px]">
+              <h3 className="text-2xl font-black text-blue-950 dark:text-white mb-8 flex items-center gap-4">
                 Our Mission
-                <div className="h-1 flex-1 bg-gray-100 dark:bg-white/10 rounded-full" />
+                <div className="h-1 flex-1 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full w-0 group-hover/missionCard:w-full bg-blue-600 transition-all duration-1000 ease-out" />
+                </div>
               </h3>
 
-              <div className="space-y-6 flex-1">
+              <div className="space-y-3 flex-1">
                 {missions.map((item, index) => (
-                  <div key={index} className="flex gap-5 p-4 rounded-2xl hover:bg-blue-50/50 dark:hover:bg-white/5 transition-all group">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gray-50 dark:bg-gray-900 shadow-sm group-hover:bg-white dark:group-hover:bg-blue-600 group-hover:shadow-md transition-all">
-                      {item.icon}
+                  <div
+                    key={index}
+                    className="group relative flex gap-4 p-4 rounded-2xl transition-all duration-500 hover:-translate-y-1 bg-blue-50/50 dark:bg-blue-950/20 border border-transparent hover:border-blue-200/50 dark:hover:border-blue-800/50 hover:shadow-xl backdrop-blur-sm"
+                  >
+                    {/* Hover Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-50/10 to-blue-100/10 dark:via-white/5 dark:to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    {/* Icon Container */}
+                    <div className="relative shrink-0">
+                      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-sm border border-gray-100 dark:border-white/5 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        {item.icon}
+                      </div>
+                      {/* Decorative point - Secondary Color */}
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-4 border-white dark:border-gray-800 bg-secondary scale-0 group-hover:scale-100 transition-transform duration-500 delay-100" />
                     </div>
-                    <div>
-                      <h4 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">{item.title}</h4>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 transition-colors">{item.desc}</p>
+
+                    <div className="relative z-10 flex-1">
+                      <h4 className="font-bold text-lg text-blue-950 dark:text-white mb-1 group-hover:translate-x-1 transition-transform duration-500 leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 font-medium leading-relaxed group-hover:text-primary dark:group-hover:text-blue-300 transition-colors">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Right Arrow - Secondary Color accent on hover */}
+                    <div className="flex items-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center border border-secondary/20 text-secondary">
+                        <ChevronUp className="rotate-90" size={16} />
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -121,44 +146,49 @@ const AboutPage = () => {
             </div>
 
             {/* Our Vision - Right Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-[30px] p-8 md:p-12 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-50 dark:border-white/5 flex flex-col items-center">
-              <h3 className="text-3xl font-black text-blue-950 dark:text-white mb-10 self-start flex items-center gap-4 w-full">
+            <div className="bg-white dark:bg-gray-800 rounded-[30px] p-6 md:p-10 shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-50 dark:border-white/5 flex flex-col items-center group/card transition-all duration-500 hover:shadow-2xl hover:shadow-blue-900/5 min-h-[620px]">
+              <h3 className="text-2xl font-black text-blue-950 dark:text-white mb-8 self-start flex items-center gap-4 w-full">
                 Our Vision
-                <div className="h-1 flex-1 bg-gray-100 dark:bg-white/10 rounded-full" />
+                <div className="h-1 flex-1 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full w-0 group-hover/card:w-full bg-blue-600 transition-all duration-1000 ease-out" />
+                </div>
               </h3>
 
-              <div className="w-full max-w-[400px] mb-10 group">
-                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl group-hover:scale-[1.02] transition-transform duration-500">
-                  <Image src="/images/contact-page/Working.png" alt="Vision" fill className="object-contain p-6" />
+              <div className="w-full flex-1 flex flex-col items-center justify-center py-2">
+                <div className="w-full max-w-[380px] mb-6 group/img">
+                  <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl group-hover/img:scale-[1.02] transition-transform duration-700 ease-in-out">
+                    <div className="absolute inset-0 bg-blue-600/5 group-hover/img:bg-transparent transition-colors duration-500 z-10" />
+                    <Image src="/images/contact-page/Working.png" alt="Vision" fill className="object-contain p-2 relative z-0" />
+                  </div>
+                </div>
+
+                <div className="text-center mb-6 px-4">
+                  <p className="text-xl md:text-2xl font-black text-blue-950 dark:text-blue-400 leading-tight italic">
+                    “To empower individuals worldwide through
+                    <span className="text-secondary decoration-secondary/30 decoration-4 underline-offset-4 decoration-skip-ink-none not-italic"> accessible and innovative </span>
+                    learning.”
+                  </p>
                 </div>
               </div>
 
-              <div className="text-center mb-10">
-                <p className="text-xl md:text-2xl font-black text-blue-900 dark:text-blue-400 leading-tight">
-                  “To empower individuals worldwide through
-                  <span className="text-blue-600 decoration-blue-600/30 decoration-4 underline-offset-4 decoration-skip-ink-none"> accessible and innovative </span>
-                  learning.”
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-6 w-full pt-8 border-t border-gray-100 dark:border-white/10 mt-auto">
-                <div className="flex flex-col items-center gap-2 group cursor-pointer">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+              <div className="grid grid-cols-3 gap-4 w-full pt-8 border-t border-gray-100 dark:border-white/10 mt-auto">
+                <div className="flex flex-col items-center gap-3 group/item cursor-pointer">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-500 shadow-sm border border-blue-100/50 dark:border-blue-800/20">
                     <Globe size={24} />
                   </div>
-                  <span className="text-xs font-bold text-gray-400 group-hover:text-blue-600 transition-colors uppercase tracking-widest text-center">Global<br />Learning</span>
+                  <span className="text-[10px] font-black text-gray-400 group-hover/item:text-secondary transition-colors uppercase tracking-[0.2em] text-center leading-tight">Global<br />Learning</span>
                 </div>
-                <div className="flex flex-col items-center gap-2 group cursor-pointer">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-green-50 dark:bg-green-900/30 text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all">
+                <div className="flex flex-col items-center gap-3 group/item cursor-pointer">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-500 shadow-sm border border-blue-100/50 dark:border-blue-800/20">
                     <BarChart3 size={24} />
                   </div>
-                  <span className="text-xs font-bold text-gray-400 group-hover:text-green-600 transition-colors uppercase tracking-widest text-center">Career<br />Growth</span>
+                  <span className="text-[10px] font-black text-gray-400 group-hover/item:text-secondary transition-colors uppercase tracking-[0.2em] text-center leading-tight">Career<br />Growth</span>
                 </div>
-                <div className="flex flex-col items-center gap-2 group cursor-pointer">
-                  <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-yellow-50 dark:bg-yellow-900/30 text-yellow-600 group-hover:bg-yellow-600 group-hover:text-white transition-all">
+                <div className="flex flex-col items-center gap-3 group/item cursor-pointer">
+                  <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-500 shadow-sm border border-blue-100/50 dark:border-blue-800/20">
                     <Lightbulb size={24} />
                   </div>
-                  <span className="text-xs font-bold text-gray-400 group-hover:text-yellow-600 transition-colors uppercase tracking-widest text-center">Innovation<br />First</span>
+                  <span className="text-[10px] font-black text-gray-400 group-hover/item:text-secondary transition-colors uppercase tracking-[0.2em] text-center leading-tight">Innovation<br />First</span>
                 </div>
               </div>
             </div>
@@ -179,7 +209,7 @@ const AboutPage = () => {
             <a className="social-icon github" href="https://github.com/tusharpaarsh" target="_blank" rel="noopener noreferrer"><FaGithub size={18} /></a>
           </div>
 
-          <div className="mission-vision-container mission-vision-container-dark rounded-3xl p-8 mt-10 relative">
+          <div className="mission-vision-container mission-vision-container-dark rounded-3xl p-3 mt-1 relative">
             <h2 className="text-2xl font-bold mb-6">" Visionary Leader and Education Advocate</h2>
 
             <div className={`relative transition-all duration-700 ease-in-out ${isFounderExpanded ? 'max-h-[2000px]' : 'max-h-[250px] overflow-hidden'}`}>
@@ -207,11 +237,11 @@ const AboutPage = () => {
             <div className="mt-[-20px] relative z-30">
               <button
                 onClick={() => setIsFounderExpanded(!isFounderExpanded)}
-                className="flex items-center justify-center gap-2 mx-auto px-8 py-3 rounded-full bg-white dark:bg-gray-800 border border-blue-500/30 text-blue-600 font-bold shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 group"
+                className="flex items-center justify-center gap-2 mx-auto px-8 py-3 rounded-full bg-white dark:bg-gray-800 border border-blue-500/30 text-primary font-bold shadow-xl shadow-blue-500/10 hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 group"
               >
-                <span className="group-hover:text-blue-700">{isFounderExpanded ? "Read Less" : "Read More"}</span>
+                <span className="group-hover:text-secondary">{isFounderExpanded ? "Read Less" : "Read More"}</span>
                 <div className={`transition-transform duration-300 ${isFounderExpanded ? 'rotate-180' : ''}`}>
-                  <ChevronDown size={20} className="text-blue-500" />
+                  <ChevronDown size={20} className="text-primary" />
                 </div>
               </button>
             </div>
@@ -223,5 +253,3 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
-
-

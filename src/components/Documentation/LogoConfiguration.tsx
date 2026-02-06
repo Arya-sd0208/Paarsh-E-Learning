@@ -17,8 +17,8 @@ export const LogoConfiguration = () => {
             <p className='ms-2'>&#x3C;Image</p>
             <p className='ms-3'>src=&#x22;/images/logo/logo-wide.webp&#x22;</p>
             <p className='ms-3'>alt=&#x22;logo-wide&#x22;</p>
-            <p className='ms-3'>width={90}</p>
-            <p className='ms-3'>height={40}</p>
+            <p className='ms-3'>width={250}</p>
+            <p className='ms-3'>height={100}</p>
             <p className='ms-3'>quality={100}</p>
             <p className='ms-3'>className=&#x27;dark:hidden&#x27;</p>
             <p>/&#x3E;</p>
@@ -27,8 +27,8 @@ export const LogoConfiguration = () => {
               src=&#x22;/images/footer/logo-wide.webp&#x22;
             </p>
             <p className='ms-5'>alt=&#x22;logo-wide&#x22;</p>
-            <p className='ms-5'>width={90}</p>
-            <p className='ms-5'>height={40}</p>
+            <p className='ms-5'>width={250}</p>
+            <p className='ms-5'>height={100}</p>
             <p className='ms-5'>quality={100}</p>
             <p className='ms-5'>className=&#x27;dark:block hidden&#x27;</p>
             <p className='ms-2'>/&#x3E;</p>

@@ -80,12 +80,12 @@ const Services = () => {
     <section className='bg-section dark:bg-darklight py-12 lg:py-20' id='services'>
       <div className='container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8'>
 
-         <div className="text-center mb-16 md:mb-24">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-blue-950 dark:text-white mb-6">
-                        Strategies for Students
-                    </h2>
-                    <div className="w-24 h-1.5 bg-blue-600 mx-auto rounded-full" />
-                </div>
+        <div className="text-center mb-16 md:mb-24">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-primary dark:text-white mb-6">
+            Strategies for Students
+          </h2>
+          <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full" />
+        </div>
 
         <div className='lg:hidden flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-2 no-scrollbar pb-4 text-justify'>
           {Servicebox.map((item, index) => (
@@ -94,7 +94,7 @@ const Services = () => {
               data-aos='fade-up'
               data-aos-delay='200'
               data-aos-duration='1000'
-              className='min-w-[85%] sm:min-w-[48%] snap-center bg-white dark:bg-darkmode rounded-2xl shadow-service p-6 sm:p-8 flex flex-col items-center text-center gap-5 transition duration-300 hover:shadow-xl'>
+              className='min-w-[85%] sm:min-w-[48%] snap-center bg-white dark:bg-darkmode border border-transparent hover:border-primary rounded-2xl shadow-service p-6 sm:p-8 flex flex-col items-center text-center gap-5 transition duration-300 hover:shadow-xl'>
               <Image
                 src={item.icon}
                 alt='Service Box'
@@ -117,13 +117,13 @@ const Services = () => {
           {Servicebox.map((item, index) => (
             <div
               key={index}
-              className='bg-white dark:bg-darkmode rounded-2xl shadow-service py-10 px-7 flex flex-col justify-between items-center text-center gap-6 transition duration-300 hover:-translate-y-2 hover:shadow-xl'>
+              className='bg-white dark:bg-darkmode border border-transparent hover:border-secondary rounded-2xl shadow-service py-10 px-7 flex flex-col justify-between items-center text-center gap-6 transition duration-300 hover:-translate-y-2 hover:shadow-xl'>
               <Image
                 src={item.icon}
                 alt='Service Box'
                 width={40}
                 height={40}
-                className='object-contain'/>
+                className='object-contain' />
 
               <h3 className='text-xl font-bold max-w-44'>
                 {item.title}

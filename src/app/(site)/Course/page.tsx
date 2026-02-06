@@ -6,12 +6,17 @@ import { coursesData } from '@/data/coursesData';
 
 const categories = [
   "All Courses",
-  "Web Development",
-  "Data Science",
-  "Design",
-  "Programming",
+  "Programming Language",
+  "Web & Software Development",
+  "Mobile Application Development",
+  "Data, Analytics & Intelligence",
+  "Artificial Intelligence & Machine Learning",
   "Cloud & DevOps",
-  "Cyber Security"
+  "Cyber Security",
+  "Software Testing & QA",
+  "Design & User Experience",
+  "Marketing & CRM Platforms",
+  "Project Management",
 ];
 
 const CoursePage = () => {
@@ -20,16 +25,15 @@ const CoursePage = () => {
 
   const filteredCourses = useMemo(() => {
     return coursesData.filter(course => {
-      const matchesSearch = course.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const query = searchQuery.toLowerCase();
+      const matchesSearch =
+        course.name.toLowerCase().includes(query) ||
+        course.description.toLowerCase().includes(query) ||
+        course.category.toLowerCase().includes(query) ||
+        (course.shortDesc && course.shortDesc.toLowerCase().includes(query));
 
       const matchesCategory = activeCategory === "All Courses" ||
-        (activeCategory === "Web Development" && (course.name.includes("Full Stack") || course.name.includes("MERN") || course.name.includes("Front-End") || course.name.includes("Back-End"))) ||
-        (activeCategory === "Data Science" && (course.name.includes("Data Science") || course.name.includes("Data Analytics"))) ||
-        (activeCategory === "Design" && course.name.includes("Design")) ||
-        (activeCategory === "Programming" && (course.name.includes("Python") || course.name.includes("C ") || course.name.includes("C++") || course.name.includes("Java"))) ||
-        (activeCategory === "Cloud & DevOps" && (course.name.includes("Cloud") || course.name.includes("DevOps"))) ||
-        (activeCategory === "Cyber Security" && (course.name.includes("Cyber") || course.name.includes("Hacking")));
+        course.category === activeCategory;
 
       return matchesSearch && matchesCategory;
     });
@@ -61,10 +65,24 @@ const CoursePage = () => {
             <input
               type="text"
               placeholder="Search courses by name or skill..."
-              className="w-full pl-12 pr-4 py-4 md:py-5 bg-white dark:bg-gray-900 rounded-2xl shadow-xl focus:ring-4 focus:ring-blue-500/20 outline-none text-gray-700 dark:text-gray-200 text-lg transition-all"
+              className="w-full pl-12 pr-12 py-4 md:py-5 bg-white dark:bg-gray-900 rounded-2xl shadow-xl focus:ring-4 focus:ring-blue-500/20 outline-none text-gray-700 dark:text-gray-200 text-lg transition-all border border-transparent focus:border-blue-500/10"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                if (e.target.value.trim() !== "") {
+                  setActiveCategory("All Courses");
+                }
+              }}
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-blue-500 transition-colors"
+                title="Clear search"
+              >
+                <Icon icon="solar:close-circle-linear" className="w-6 h-6" />
+              </button>
+            )}
           </div>
         </div>
       </section>
@@ -72,7 +90,7 @@ const CoursePage = () => {
       {/* Categories & Filter Tabs */}
       <section className="container mx-auto max-w-7xl px-4 -mt-8 relative z-20">
         <div className="bg-white dark:bg-gray-900 p-2 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 backdrop-blur-md">
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide py-1 px-1">
+          <div className="flex items-center gap-2 overflow-x-auto py-1 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -92,9 +110,9 @@ const CoursePage = () => {
       </section>
 
       {/* Courses Grid */}
-      <section className="container mx-auto max-w-7xl px-4 mt-4 pb-20">
+      <section className="container mx-auto max-w-7xl px-4 -mt-6 pb-20">
         {filteredCourses.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {filteredCourses.map((course) => (
               <CourseCard key={course.id} course={course as any} />
             ))}

@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-    Mail,
+  Mail,
   Phone,
   Clock,
   MapPin,
@@ -12,65 +12,67 @@ import {
   Send,
   Navigation
 } from "lucide-react";
-import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
 
+/**
+ * Contact Page
+ * Color Scheme:
+ * Primary: #2B4278 (Dark Blue)
+ * Secondary: #01A0E2 (Bright Blue/Cyan)
+ */
 const ContactPage = () => {
   return (
-    <div className="bg-white dark:bg-[#18181b] transition-colors duration-300">
+    <div className="bg-white dark:bg-[#0f172a] transition-colors duration-300">
+      {/* Hero Section */}
+      <section className="relative w-full bg-gradient-to-b from-[#01A0E2]/5 to-white dark:from-slate-900 dark:to-[#0f172a] pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+        {/* Abstract Background Shapes */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2B4278]/5 skew-x-12 transform translate-x-32 pointer-events-none"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#01A0E2]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-      <section className="relative w-full bg-[#f8faff] dark:bg-[#1e1e24] pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="md:w-1/2">
-              <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 mb-4 font-medium">
-                <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+              <nav className="flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 mb-6 font-medium">
+                <Link href="/" className="hover:text-[#01A0E2] transition-colors">Home</Link>
                 <ChevronRight size={14} className="opacity-50" />
                 <span className="text-gray-600 dark:text-gray-300">Contact Us</span>
               </nav>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-blue-950 dark:text-white mb-6 leading-tight">
-                Contact Us
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-[#2B4278] dark:text-white mb-6 leading-tight">
+                Let's <span className="text-[#01A0E2]">Connect</span> & Grow
               </h1>
 
-              <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-md">
-                Have questions? Get in touch with our team.<br />
-                We're ready to help you on your learning journey.
+              <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-md leading-relaxed">
+                Have questions or ready to start your journey? Our expert team is here to support your path to excellence.
               </p>
             </div>
 
             <div className="md:w-1/2 relative flex justify-center">
               <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
+                {/* Decorative backdrop */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#2B4278]/10 via-[#01A0E2]/5 to-[#2B4278]/10 rounded-full blur-2xl transform rotate-12 scale-110"></div>
 
-                <div className="absolute inset-0 bg-blue-500/5 dark:bg-blue-500/10 rounded-full animate-pulse border border-blue-500/10 shadow-[0_0_50px_rgba(59,130,246,0.1)]" />
-                <div className="absolute inset-10 bg-white/40 dark:bg-white/5 rounded-full backdrop-blur-3xl border border-white/20 shadow-2xl animate-spin-slow duration-[20s]" />
-
-                <div className="absolute top-10 right-10 w-24 h-24 bg-blue-400/20 rounded-full blur-2xl animate-float" />
-                <div className="absolute bottom-10 left-10 w-32 h-32 bg-indigo-400/20 rounded-full blur-2xl animate-float-delayed" />
-
-                <div className="absolute top-[20%] left-[10%] animate-bounce-slow">
-                  <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-xl rotate-12 border border-gray-100 dark:border-white/10">
-                    <Mail size={24} className="text-blue-500" />
-                  </div>
-                </div>
-                <div className="absolute bottom-[25%] right-[5%] animate-bounce-delayed">
-                  <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-xl -rotate-12 border border-gray-100 dark:border-white/10">
-                    <Phone size={24} className="text-green-500" />
-                  </div>
-                </div>
-                <div className="absolute top-[10%] right-[15%] animate-float">
-                  <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-xl rotate-[-15deg] border border-gray-100 dark:border-white/10">
-                    <MapPin size={24} className="text-red-500" />
-                  </div>
+                <div className="relative w-full h-full rounded-full border-[12px] border-white dark:border-slate-800 shadow-2xl overflow-hidden group">
+                  <Image
+                    src="/images/contact-page/vision.png"
+                    alt="Contact Us"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-1000"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-[#2B4278]/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
 
-                <Image
-                  src="/images/contact-page/Working.png"
-                  alt="Contact Us Illustration"
-                  width={450}
-                  height={450}
-                  className="object-contain relative z-20 hover:scale-105 transition-transform duration-700 pointer-events-none drop-shadow-2xl"
-                  priority
-                />
+                {/* Floating Badges */}
+                <div className="absolute -top-4 -right-4 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl border border-[#01A0E2]/20 dark:border-slate-700 animate-float">
+                  <div className="w-10 h-10 bg-[#2B4278] rounded-xl flex items-center justify-center text-white font-bold">
+                    <Mail size={20} />
+                  </div>
+                </div>
+                <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl border border-[#01A0E2]/10 dark:border-slate-700 animate-float-delayed">
+                  <div className="w-10 h-10 bg-[#01A0E2] rounded-xl flex items-center justify-center text-white font-bold">
+                    <Phone size={20} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -78,143 +80,176 @@ const ContactPage = () => {
       </section>
 
       <main className="container mx-auto px-4 max-w-7xl py-16 md:py-24">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-
-          <div className="space-y-12 -mt-10">
-            <div className="bg-white dark:bg-gray-900 rounded-[30px] p-8 md:p-10 border border-gray-50 dark:border-white/5 shadow-2xl shadow-gray-100/50">
-              <h2 className="text-2xl md:text-3xl font-black text-blue-950 dark:text-white mb-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
+          {/* Left Column: Info Cards & Map */}
+          <div className="space-y-12">
+            <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-12 border border-slate-100 dark:border-white/5 shadow-2xl shadow-[#2B4278]/5 dark:shadow-none">
+              <h2 className="text-3xl font-black text-[#2B4278] dark:text-white mb-12">
                 Contact Information
               </h2>
 
-              <div className="space-y-10">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-blue-600 rounded-[20px] flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/20">
+              <div className="grid sm:grid-cols-1 gap-8">
+                {/* Phone Card */}
+                <div className="group flex items-center gap-6 p-4 rounded-3xl hover:bg-[#01A0E2]/5 dark:hover:bg-[#01A0E2]/10 transition-colors">
+                  <div className="w-16 h-16 bg-[#01A0E2] rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-[#01A0E2]/20 group-hover:scale-110 transition-transform">
                     <Phone className="text-white" size={28} />
                   </div>
-                  <Link href="tel:+919075201033" className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 transition-colors">
-                    +91 90752 01033
-                  </Link>
+                  <div>
+                    <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Call Us</p>
+                    <Link href="tel:+919075201033" className="text-xl font-bold text-[#2B4278] dark:text-white hover:text-[#01A0E2] transition-colors">
+                      +91 90752 01033
+                    </Link>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-blue-500 rounded-[20px] flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/20">
+                {/* Email Card */}
+                <div className="group flex items-center gap-6 p-4 rounded-3xl hover:bg-[#2B4278]/5 dark:hover:bg-[#2B4278]/10 transition-colors">
+                  <div className="w-16 h-16 bg-[#2B4278] rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-[#2B4278]/20 group-hover:scale-110 transition-transform">
                     <Mail className="text-white" size={28} />
                   </div>
                   <div>
-                    <p className="text-gray-400 text-sm font-medium mb-1">Email address</p>
-                    <Link href="mailto:contact@sparkandlearning.com" className="text-xl font-bold text-gray-900 dark:text-white hover:text-blue-600 transition-colors">
+                    <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Email Us</p>
+                    <Link href="mailto:info@paarshelearning.com" className="text-xl font-bold text-[#2B4278] dark:text-white hover:text-[#01A0E2] transition-colors">
                       info@paarshelearning.com
                     </Link>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 bg-blue-400 rounded-[20px] flex items-center justify-center shrink-0 shadow-lg shadow-blue-400/20">
+                {/* Address Card */}
+                <div className="group flex items-start gap-6 p-4 rounded-3xl hover:bg-[#01A0E2]/5 dark:hover:bg-[#01A0E2]/10 transition-colors">
+                  <div className="w-16 h-16 bg-[#01A0E2] rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-[#01A0E2]/20 group-hover:scale-110 transition-transform">
                     <MapPin className="text-white" size={28} />
                   </div>
                   <div>
-                    <p className="text-gray-400 text-sm font-medium mb-1">Address</p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-white leading-snug">
-                      Office no 1, Bhakti Apartmnent, Near Rasoi Hotel, Suchita Nagar, Mumbai Naka, Nashik 422001
+                    <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Visit Us</p>
+                    <p className="text-lg font-bold text-[#2B4278] dark:text-white leading-relaxed">
+                      Second Floor, Wisteriaa Fortune, C-206-207, Bhumkar Das Gugre Rd, near Bhumkar Chowk, Wakad, Pune, Maharashtra 411057
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-blue-300 rounded-[20px] flex items-center justify-center shrink-0 shadow-lg shadow-blue-300/20">
+                {/* Hours Card */}
+                <div className="group flex items-center gap-6 p-4 rounded-3xl hover:bg-[#2B4278]/5 dark:hover:bg-[#2B4278]/10 transition-colors">
+                  <div className="w-16 h-16 bg-[#2B4278] rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-[#2B4278]/20 group-hover:scale-110 transition-transform">
                     <Clock className="text-white" size={28} />
                   </div>
                   <div>
-                    <p className="text-gray-400 text-sm font-medium mb-1">Working hours</p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-white">
-                      Monday to Friday, 9:30 AM - 7:30 PM
+                    <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">Open Hours</p>
+                    <p className="text-lg font-bold text-[#2B4278] dark:text-white">
+                      Mon - Fri, 9:30 AM - 7:30 PM
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="w-full h-[400px] rounded-[30px] overflow-hidden shadow-2xl border border-gray-100 dark:border-white/5 relative group">
+            {/* Map Container */}
+            <div className="w-full h-[350px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-100 dark:border-white/5 relative group">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.19149495048!2d73.7818!3d19.9814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU4JzUzLjAiTiA3M8KwNDYnNTQuNSJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.3833772295556!2d73.7432822751936!3d18.602177484306354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb84a53dcf37%3A0x6fe3dbdb8a330ab0!2sPaarsh%20Infotech%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1707222100000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
+                className="grayscale group-hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute bottom-4 right-4 group-hover:scale-110 transition-transform">
-                <div className="bg-white p-3 rounded-full shadow-xl">
-                  <Navigation size={24} className="text-blue-600" />
+              <div className="absolute top-6 left-6">
+                <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                  <Navigation size={16} className="text-[#01A0E2]" />
+                  <span className="text-xs font-bold text-[#2B4278]">Pune, India</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="space-y-10">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-blue-950 dark:text-white mb-6">
-                Get In Touch
+          {/* Right Column: Form */}
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#01A0E2]/10 dark:bg-[#01A0E2]/20 rounded-full border border-[#01A0E2]/20">
+                <span className="w-2 h-2 bg-[#01A0E2] rounded-full animate-pulse"></span>
+                <span className="text-xs font-bold text-[#01A0E2] uppercase tracking-widest">Inquiry Form</span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-black text-[#2B4278] dark:text-white leading-tight">
+                Get In <span className="text-[#01A0E2]">Touch</span>
               </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed">
-                We're here to help! Whether you have questions about our <br className="hidden md:block" /> courses, need support, or just want to say hello, our team is here for you.
+              <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-lg">
+                We're here to help! Send us a message and our counselor will get back to you within 24 hours.
               </p>
             </div>
 
             <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-[#2B4278] dark:text-slate-300 ml-2">Your Name</label>
+                  <input
+                    type="text"
+                    placeholder="Full name"
+                    className="w-full px-6 py-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 focus:ring-2 focus:ring-[#01A0E2] focus:bg-white dark:focus:bg-slate-900 outline-none transition-all placeholder:text-slate-300"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-[#2B4278] dark:text-slate-300 ml-2">Email Address</label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="w-full px-6 py-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 focus:ring-2 focus:ring-[#01A0E2] focus:bg-white dark:focus:bg-slate-900 outline-none transition-all placeholder:text-slate-300"
+                  />
+                </div>
+              </div>
+
               <div className="space-y-2">
-                <label className="text-lg font-bold text-blue-950 dark:text-white">Your Name</label>
+                <label className="text-sm font-bold text-[#2B4278] dark:text-slate-300 ml-2">Phone Number</label>
                 <input
                   type="text"
-                  placeholder="Your Name"
-                  className="w-full px-6 py-4 rounded-xl border border-gray-100 bg-[#fcfdff] focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-gray-300"
+                  placeholder="Contact Number"
+                  className="w-full px-6 py-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 focus:ring-2 focus:ring-[#01A0E2] focus:bg-white dark:focus:bg-slate-900 outline-none transition-all placeholder:text-slate-300"
                 />
               </div>
+
               <div className="space-y-2">
-                <label className="text-lg font-bold text-blue-950 dark:text-white">Your Email</label>
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-6 py-4 rounded-xl border border-gray-100 bg-[#fcfdff] focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-gray-300"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-lg font-bold text-blue-950 dark:text-white">Your Phone (optional)</label>
-                <input
-                  type="text"
-                  placeholder="Your Phone"
-                  className="w-full px-6 py-4 rounded-xl border border-gray-100 bg-[#fcfdff] focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-gray-300"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-lg font-bold text-blue-950 dark:text-white">Your Message</label>
+                <label className="text-sm font-bold text-[#2B4278] dark:text-slate-300 ml-2">Tell us more</label>
                 <textarea
-                  rows={5}
-                  placeholder="Your Message"
-                  className="w-full px-6 py-4 rounded-xl border border-gray-100 bg-[#fcfdff] focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-gray-300 resize-none"
+                  rows={4}
+                  placeholder="How can we help you?"
+                  className="w-full px-6 py-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 focus:ring-2 focus:ring-[#01A0E2] focus:bg-white dark:focus:bg-slate-900 outline-none transition-all placeholder:text-slate-300 resize-none"
                 ></textarea>
               </div>
-              <button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-xl transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-600/20 active:scale-95">
+
+              <button className="w-full bg-[#01A0E2] hover:bg-[#2B4278] text-white font-black py-5 px-10 rounded-2xl transition-all flex items-center justify-center gap-3 shadow-xl shadow-[#01A0E2]/30 active:scale-95 group">
                 Send Message
-                <Send size={20} />
+                <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </button>
             </form>
           </div>
         </div>
 
-        <section className="mt-24 text-center pb-24">
-          <h2 className="text-4xl md:text-5xl font-black text-blue-950 dark:text-white mb-6">
-            Ready to Start Learning?
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
-            Join thousands of learners who are achieving their career goals with our expert-led courses.
-          </p>
-          <Link
-            href="/Course"
-            className="inline-flex items-center justify-center px-12 py-5 bg-[#008080] hover:bg-[#006666] text-white text-xl font-bold rounded-xl transition-all shadow-xl shadow-[#008080]/20 active:scale-95"
-          >
-            Browse Courses
-          </Link>
+        {/* Bottom CTA */}
+        <section className="mt-28 relative overflow-hidden">
+          <div className="bg-[#2B4278] rounded-[3rem] w-fit mx-auto p-5 md:p-11 text-center text-white relative overflow-hidden group">
+            {/* Animated background elements */}
+            <div className="absolute top-0 right-0 w-64 h-50 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-125 transition-transform duration-1000"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-50 bg-[#01A0E2]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+            <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+              <h2 className="text-4xl md:text-6xl font-black leading-tight">
+                Ready to Accelerate Your <span className="text-[#01A0E2]">Career?</span>
+              </h2>
+              <p className="text-xl text-blue-50/80 font-medium max-w-xl mx-auto">
+                Join our community of 5000+ graduates who have transformed their lives with expert-led mentorship.
+              </p>
+              <div className="pt-6">
+                <Link
+                  href="/Course"
+                  className="inline-flex items-center justify-center px-12 py-5 bg-white text-[#2B4278] text-xl font-black rounded-2xl hover:bg-[#01A0E2] hover:text-white transition-all shadow-2xl active:scale-95 group"
+                >
+                  Explore All Courses
+                  <ChevronRight size={24} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </div>

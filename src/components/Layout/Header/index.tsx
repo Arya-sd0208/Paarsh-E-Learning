@@ -6,8 +6,8 @@ import { headerData } from '../Header/Navigation/menuData'
 import Logo from './Logo'
 import HeaderLink from '../Header/Navigation/HeaderLink'
 import MobileHeaderLink from '../Header/Navigation/MobileHeaderLink'
-import Signin from '@/components/Auth/SignIn'
-import SignUp from '@/components/Auth/SignUp'
+// import Signin from '@/components/Auth/SignIn'
+// import SignUp from '@/components/Auth/SignUp'
 // import { useTheme } from 'next-themes'
 import { Icon } from '@iconify/react/dist/iconify.js'
 import { SuccessfullLogin } from '@/components/Auth/AuthDialog/SuccessfulLogin'
@@ -78,14 +78,13 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed h-24 top-0 py-1 z-50 w-full dark:bg-transparent transition-all ${
-        sticky
-          ? 'shadow-lg bg-white dark:shadow-dark-md dark:bg-darklight!'
-          : 'shadow-none'
-      }`}>
-      <div className='container mx-auto max-w-6xl flex items-center justify-between p-6'>
+      className={`fixed h-20 top-0 py-1 z-50 w-full dark:bg-transparent transition-all ${sticky
+        ? 'shadow-lg bg-white dark:shadow-dark-md dark:bg-darklight!'
+        : 'shadow-none'
+        }`}>
+      <div className='container mx-auto max-w-6xl flex items-center justify-between p-4 md:p-5'>
         <Logo />
-        <nav className='hidden lg:flex grow items-center justify-center gap-6'>
+        <nav className='hidden lg:flex grow items-center justify-end gap-6 ml-12'>
           {headerData.map((item, index) => (
             <HeaderLink key={index} item={item} />
           ))}
@@ -113,14 +112,14 @@ const Header: React.FC = () => {
               <path d='M16.6111 15.855C17.591 15.1394 18.3151 14.1979 18.7723 13.1623C16.4824 13.4065 14.1342 12.4631 12.6795 10.4711C11.2248 8.47905 11.0409 5.95516 11.9705 3.84818C10.8449 3.9685 9.72768 4.37162 8.74781 5.08719C5.7759 7.25747 5.12529 11.4308 7.29558 14.4028C9.46586 17.3747 13.6392 18.0253 16.6111 15.855Z' />
             </svg>
           </button> */}
-          <Link
+          {/* <Link
             href='#'
             className='hidden lg:block bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white'
             onClick={() => {
               setIsSignInOpen(true)
             }}>
             Sign In
-          </Link>
+          </Link> */}
           {isSignInOpen && (
             <div
               ref={signInRef}
@@ -135,20 +134,20 @@ const Header: React.FC = () => {
                     className='text-2xl dark:text-white'
                   />
                 </button>
-                <Signin
+                {/* <Signin
                   signInOpen={(value: boolean) => setIsSignInOpen(value)}
-                />
+                /> */}
               </div>
             </div>
           )}
-          <Link
+          {/* <Link
             href='#'
             className='hidden lg:block bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700'
             onClick={() => {
               setIsSignUpOpen(true)
             }}>
             Sign Up
-          </Link>
+          </Link> */}
           {isSignUpOpen && (
             <div
               ref={signUpRef}
@@ -163,9 +162,9 @@ const Header: React.FC = () => {
                     className='text-2xl dark:text-white'
                   />
                 </button>
-                <SignUp
+                {/* <SignUp
                   signUpOpen={(value: boolean) => setIsSignUpOpen(value)}
-                />
+                /> */}
               </div>
             </div>
           )}
@@ -185,9 +184,8 @@ const Header: React.FC = () => {
 
       <div
         ref={mobileMenuRef}
-        className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darkmode shadow-lg transform transition-transform duration-300 max-w-xs ${
-          navbarOpen ? 'translate-x-0' : 'translate-x-full'
-        } z-50`}>
+        className={`lg:hidden fixed top-0 right-0 h-full w-full bg-white dark:bg-darkmode shadow-lg transform transition-transform duration-300 max-w-xs ${navbarOpen ? 'translate-x-0' : 'translate-x-full'
+          } z-50`}>
         <div className='flex items-center justify-between p-4'>
           <h2 className='text-lg font-bold text-midnight_text dark:text-white'>
             Menu
@@ -217,7 +215,7 @@ const Header: React.FC = () => {
             <MobileHeaderLink key={index} item={item} />
           ))}
           <div className='mt-4 flex flex-col gap-4 w-full'>
-            <Link
+            {/* <Link
               href='#'
               className='bg-transparent border border-primary text-primary px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white'
               onClick={() => {
@@ -225,8 +223,8 @@ const Header: React.FC = () => {
                 setNavbarOpen(false)
               }}>
               Sign In
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               href='#'
               className='bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700'
               onClick={() => {
@@ -234,29 +232,26 @@ const Header: React.FC = () => {
                 setNavbarOpen(false)
               }}>
               Sign Up
-            </Link>
+            </Link> */}
           </div>
         </nav>
       </div>
       {/* Successsful Login Alert */}
       <div
-        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${
-          authDialog?.isSuccessDialogOpen == true ? 'block' : 'hidden'
-        }`}>
+        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${authDialog?.isSuccessDialogOpen == true ? 'block' : 'hidden'
+          }`}>
         <SuccessfullLogin />
       </div>
       {/* Failed Login Alert */}
       <div
-        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${
-          authDialog?.isFailedDialogOpen == true ? 'block' : 'hidden'
-        }`}>
+        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${authDialog?.isFailedDialogOpen == true ? 'block' : 'hidden'
+          }`}>
         <FailedLogin />
       </div>
       {/* User registration Alert */}
       <div
-        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${
-          authDialog?.isUserRegistered == true ? 'block' : 'hidden'
-        }`}>
+        className={`fixed top-6 end-1/2 translate-x-1/2 z-50 ${authDialog?.isUserRegistered == true ? 'block' : 'hidden'
+          }`}>
         <UserRegistered />
       </div>
     </header>

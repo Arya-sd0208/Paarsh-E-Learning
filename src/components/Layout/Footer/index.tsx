@@ -284,7 +284,7 @@ const Footer = () => {
               <Image
                 src={getImgPath("/images/logo/logo-wide.webp")}
                 alt="logo"
-                width={200}
+                width={250}
                 height={100}
                 className="mb-4"
               />
@@ -372,9 +372,10 @@ const Footer = () => {
               <li><Link href="/about" className="hover:text-primary transition">About</Link></li>
               <li><Link href="/Course" className="hover:text-primary transition">Courses</Link></li>
               <li><Link href="/blog" className="hover:text-primary transition">Blog</Link></li>
+              <li><Link href="/inquiry" className="hover:text-primary transition">Inquiry</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition">Contact</Link></li>
             </ul>
-          </div>
+          </div> 
 
           <div className="flex-1 text-left lg:max-w-xs ml-0 lg:ml-[10%]">
             <h3 className="text-white font-semibold mb-4">Contact</h3>

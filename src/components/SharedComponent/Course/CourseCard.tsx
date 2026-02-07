@@ -12,8 +12,8 @@ export interface Course {
   galleryImage?: string;
   detailsImage?: string;
   slug: string;
-  description: string;
-  category: string;
+  description?: string;
+  category?: string;
   date?: string;
   fee?: number;
   rating?: number;

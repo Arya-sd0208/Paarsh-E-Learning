@@ -1,0 +1,10 @@
+﻿
+> venus_project@1.0.1 build
+> next build
+
+  Γû▓ Next.js 14.2.26
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...

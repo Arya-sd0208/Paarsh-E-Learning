@@ -16,27 +16,28 @@ export default function RootLayout({
   session,
 }: Readonly<{
   children: React.ReactNode;
-  session:any
+  session: any
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-      <NextTopLoader />
-      <AuthDialogProvider>
-      <SessionProviderComp session={session}>
-        <ThemeProvider
-          attribute="class"
-          enableSystem={true}
-          defaultTheme="system"
-        >
-          <Aoscompo>
-            <Header />
-            {children}
-            <Footer />
-          </Aoscompo>
-          <ScrollToTop />
-        </ThemeProvider>
-        </SessionProviderComp>
+        <NextTopLoader />
+        <AuthDialogProvider>
+          <SessionProviderComp session={session}>
+            <ThemeProvider
+              attribute="class"
+              enableSystem={false}
+              defaultTheme="light"
+              forcedTheme="light"
+            >
+              <Aoscompo>
+                <Header />
+                {children}
+                <Footer />
+              </Aoscompo>
+              <ScrollToTop />
+            </ThemeProvider>
+          </SessionProviderComp>
         </AuthDialogProvider>
       </body>
     </html>

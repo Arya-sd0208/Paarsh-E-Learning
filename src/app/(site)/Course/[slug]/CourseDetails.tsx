@@ -392,8 +392,8 @@ const CourseDetails = ({ slug }: { slug: string }) => {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-[#1E3A8A] via-[#3B82F6] to-[#6366F1] py-10 md:py-14 px-4">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 transform translate-x-20"></div>
-        <div className="container mx-auto max-w-7xl grid lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="text-white">
+        <div className="container mx-auto max-w-7xl relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="text-white lg:col-span-6">
             <div className="flex items-center gap-2 mb-6">
               <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider">
                 {course.level || 'Featured'}
@@ -414,16 +414,17 @@ const CourseDetails = ({ slug }: { slug: string }) => {
             </div>
           </div>
 
-          <div className="relative group flex justify-center lg:justify-end">
+          <div className="relative group lg:col-span-6 w-full">
             <div className="absolute inset-0 bg-blue-400 blur-3xl opacity-20 group-hover:opacity-30 transition-opacity rounded-full"></div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 aspect-video w-full max-w-xl">
-              <iframe
-                src={course.videoUrl}
-                title={course.name}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 aspect-video w-full bg-black">
+              <video
+                src={getImgPath("/images/course/WhatsApp Video 2026-02-07 at 1.46.56 PM.mp4")}
+                controls
+                className="w-full h-full object-contain"
+                poster={course.detailsImage || course.image}
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>

@@ -45,8 +45,7 @@
 
 import CourseDetails from "./CourseDetails";
 import { Metadata } from "next";
-import fs from "fs";
-import path from "path";
+import { coursesData } from "@/data/coursesData";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -67,20 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  try {
-    const postsDirectory = path.join(process.cwd(), "markdown/Course");
-    const files = fs.readdirSync(postsDirectory);
-
-    return files.map((file) => ({
-      slug: file.replace(/\.mdx$/, ""),
-    }));
-  } catch (error) {
-    console.error("Error reading courses:", error);
-
-    return [
-      { slug: "Course_1" },
-      { slug: "Course_2" },
-      { slug: "Course_3" },
-    ];
-  }
+  return coursesData.map((course) => ({
+    slug: course.slug,
+  }));
 }

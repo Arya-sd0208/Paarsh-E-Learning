@@ -155,7 +155,7 @@ const AboutPage = () => {
               </h3>
 
               <div className="w-full flex-1 flex flex-col items-center justify-center py-2">
-                <div className="w-full max-w-[380px] mb-6 group/img">
+                <div className="w-full max-w-[380px] mb-6 group/img mx-auto md:mx-0">
                   <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl group-hover/img:scale-[1.02] transition-transform duration-700 ease-in-out">
                     <div className="absolute inset-0 bg-blue-600/5 group-hover/img:bg-transparent transition-colors duration-500 z-10" />
                     <Image src="/images/contact-page/Working.png" alt="Vision" fill className="object-contain p-2 relative z-0" />
@@ -210,7 +210,7 @@ const AboutPage = () => {
           </div>
 
           <div className="mission-vision-container mission-vision-container-dark rounded-3xl p-3 mt-1 relative">
-            <h2 className="text-2xl font-bold mb-6">" Visionary Leader and Education Advocate</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-6">"Visionary Leader and Education Advocate"</h2>
 
             <div className={`relative transition-all duration-700 ease-in-out ${isFounderExpanded ? 'max-h-[2000px]' : 'max-h-[250px] overflow-hidden'}`}>
               <p>

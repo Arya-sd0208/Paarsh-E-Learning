@@ -128,7 +128,7 @@ const Hero = () => {
             Education is door for future & Paarsh E-Learning is the key for Bright your future
           </p>
 
-          <div className='flex flex-col sm:flex-row items-center gap-8'>
+          <div className='flex flex-col sm:flex-row items-start sm:items-center gap-8'>
             <Link
               href='/Course'
               className='py-4 px-10 bg-primary text-white font-bold rounded-2xl shadow-xl shadow-primary/20 hover:bg-primary/90 hover:-translate-y-1 transition-all duration-300'>
@@ -171,7 +171,7 @@ const Hero = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] bg-primary/5 rounded-[60px] rotate-6 border border-primary/10"></div>
 
             {/* Main Image Frame */}
-            <div className="relative overflow-hidden rounded-[45px] border-[10px] border-white shadow-2xl z-10 max-h-[400px] lg:max-h-[450px]">
+            <div className="relative overflow-hidden rounded-[30px] md:rounded-[45px] border-[6px] md:border-[10px] border-white shadow-2xl z-10 max-h-[300px] md:max-h-[400px] lg:max-h-[450px]">
               <Image
                 src={getImgPath('/images/hero/elearn.png')}
                 alt='Educational Portal'

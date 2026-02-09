@@ -390,7 +390,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#1E3A8A] via-[#3B82F6] to-[#6366F1] py-10 md:py-14 px-4">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1E3A8A] via-[#3B82F6] to-[#6366F1] py-8 md:py-14 px-4">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 transform translate-x-20"></div>
         <div className="container mx-auto max-w-7xl relative z-10 grid lg:grid-cols-12 gap-12 items-center">
           <div className="text-white lg:col-span-6">
@@ -400,10 +400,10 @@ const CourseDetails = ({ slug }: { slug: string }) => {
               </span>
               <span className="text-white/60 text-sm">Course &gt; {course.level || 'Development'}</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-6xl font-extrabold mb-4 leading-tight">
               {course.name}
             </h1>
-            <p className="text-lg md:text-xl text-blue-50 mb-8 max-w-xl opacity-90 leading-relaxed">
+            <p className="text-base md:text-xl text-blue-50 mb-6 max-w-xl opacity-90 leading-relaxed">
               {course.description}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -414,7 +414,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
             </div>
           </div>
 
-          <div className="relative group lg:col-span-6 w-full">
+          <div className="relative group lg:col-span-6 w-full lg:-mt-12">
             <div className="absolute inset-0 bg-blue-400 blur-3xl opacity-20 group-hover:opacity-30 transition-opacity rounded-full"></div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 aspect-video w-full bg-black">
               <video
@@ -431,42 +431,42 @@ const CourseDetails = ({ slug }: { slug: string }) => {
       </section>
 
       {/* Meta Info Bar */}
-      <div className="container mx-auto max-w-7xl px-4 -mt-10 relative z-20">
-        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-6 border border-gray-100 dark:border-gray-800">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600">
-              <Icon icon="solar:clock-circle-bold" width="24" />
+      <div className="container mx-auto max-w-7xl px-4 -mt-8 relative z-20">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-4 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 border border-gray-100 dark:border-gray-800">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600">
+              <Icon icon="solar:clock-circle-bold" className="w-5 h-5 md:w-6 md:h-6" />
             </div>
             <div>
-              <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Duration</p>
-              <p className="text-sm md:text-base font-bold dark:text-white">{course.duration || '8 Weeks'}</p>
+              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Duration</p>
+              <p className="text-xs md:text-base font-bold dark:text-white">{course.duration || '8 Weeks'}</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-50 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600">
-              <Icon icon="solar:chart-square-bold" width="24" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-green-50 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600">
+              <Icon icon="solar:chart-square-bold" className="w-5 h-5 md:w-6 md:h-6" />
             </div>
             <div>
-              <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Skill Level</p>
-              <p className="text-sm md:text-base font-bold dark:text-white">{course.level || 'Beginner'}</p>
+              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Skill Level</p>
+              <p className="text-xs md:text-base font-bold dark:text-white">{course.level || 'Beginner'}</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600">
-              <Icon icon="solar:laptop-bold" width="24" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-50 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600">
+              <Icon icon="solar:laptop-bold" className="w-5 h-5 md:w-6 md:h-6" />
             </div>
             <div>
-              <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Learning Mode</p>
-              <p className="text-sm md:text-base font-bold dark:text-white">{course.mode || 'Self-Paced'}</p>
+              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Learning Mode</p>
+              <p className="text-xs md:text-base font-bold dark:text-white">{course.mode || 'Self-Paced'}</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-yellow-50 dark:bg-yellow-900/30 rounded-xl flex items-center justify-center text-yellow-600">
-              <Icon icon="solar:star-bold" width="24" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-50 dark:bg-yellow-900/30 rounded-xl flex items-center justify-center text-yellow-600">
+              <Icon icon="solar:star-bold" className="w-5 h-5 md:w-6 md:h-6" />
             </div>
             <div>
-              <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Reviews</p>
-              <div className="flex items-center gap-1 font-bold dark:text-white text-sm md:text-base">
+              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Reviews</p>
+              <div className="flex items-center gap-1 font-bold dark:text-white text-xs md:text-base">
                 <span>{course.rating || '4.8'}</span>
                 <div className="flex text-yellow-500">
                   <Icon icon="material-symbols:star-rounded" />
@@ -479,7 +479,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
       </div>
 
       {/* Main Content Area */}
-      <main className="container mx-auto max-w-7xl px-4 pt-2 pb-20">
+      <main className="container mx-auto max-w-7xl px-4 pt-2 pb-6 md:pb-20">
         <div className="grid lg:grid-cols-12 gap-8 items-start">
 
           {/* Left Column: Course Details */}
@@ -523,7 +523,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                 {course.curriculum.map((item, index) => (
                   <div key={index} className={`group bg-white dark:bg-gray-900 border ${activeAccordion === index ? 'border-[#01A0E2] ring-1 ring-[#01A0E2]/20' : 'border-gray-100 dark:border-gray-800'} rounded-2xl overflow-hidden transition-all duration-300 shadow-sm`}>
                     <div
-                      className="p-6 flex items-center justify-between cursor-pointer"
+                      className="p-4 md:p-6 flex items-center justify-between cursor-pointer"
                       onClick={() => toggleAccordion(index)}
                     >
                       <div className="flex items-center gap-4">
@@ -546,8 +546,8 @@ const CourseDetails = ({ slug }: { slug: string }) => {
 
                     {/* Accordion Content */}
                     <div className={`transition-all duration-300 ease-in-out ${activeAccordion === index ? 'max-h-[500px] opacity-100 border-t border-gray-100 dark:border-gray-800' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                      <div className="p-6 bg-[#01A0E2]/5 dark:bg-[#01A0E2]/10">
-                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      <div className="p-4 md:p-6 bg-[#01A0E2]/5 dark:bg-[#01A0E2]/10">
+                        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                           {item.topics}
                         </p>
                       </div>
@@ -582,12 +582,12 @@ const CourseDetails = ({ slug }: { slug: string }) => {
           </div>
 
           {/* Right Column: Sidebar */}
-          <aside className="lg:col-span-4 self-start sticky top-24 z-30">
-            <div className="space-y-8">
+          <aside className="lg:col-span-4 self-start sticky top-24 z-30 -mt-10 md:mt-0">
+            <div className="space-y-6">
 
               {/* Tools & Stack */}
               {course.tools && (
-                <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-800 mt-10">
+                <div className="bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-gray-800">
                   <h3 className="font-bold mb-6 flex items-center gap-2 text-[#2B4278] dark:text-white">
                     <Icon icon="solar:box-bold" className="text-[#01A0E2]" />
                     Tools & Technologies
@@ -629,7 +629,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
               )}
 
               {/* Enrollment Card */}
-              <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-2xl border border-[#01A0E2]/10 dark:border-gray-800 ring-1 ring-[#01A0E2]/5 mt-10">
+              <div className="bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-8 shadow-2xl border border-[#01A0E2]/10 dark:border-gray-800 ring-1 ring-[#01A0E2]/5 mt-4 md:mt-10">
                 {course.fee && (
                   <div className="mb-6">
                     <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1">Course Fee</p>
@@ -668,7 +668,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
 
 
               {/* Certification Banner */}
-              <div className="bg-gradient-to-br from-[#2B4278] to-[#01A0E2] rounded-3xl p-8 text-white relative overflow-hidden mt-10">
+              <div className="bg-gradient-to-br from-[#2B4278] to-[#01A0E2] rounded-3xl p-6 md:p-8 text-white relative overflow-hidden mt-12 md:mt-14">
                 <Icon icon="solar:medal-ribbon-bold" className="absolute bottom-[-20px] right-[-20px] w-40 h-40 text-white/5 -rotate-12" />
                 <div className="relative z-10 space-y-4">
                   <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
@@ -704,8 +704,8 @@ const CourseDetails = ({ slug }: { slug: string }) => {
         </div>
 
         {course.instructor && (
-          <section className="space-y-4 border-t border-gray-100 dark:border-gray-800 mt-2 pt-2">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <section className="space-y-4 border-t border-gray-100 dark:border-gray-800 mt-14 md:mt-2 pt-2 pb-0 md:pb-0">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
               <h2 className="text-2xl font-bold text-[#2B4278] dark:text-white">Meet Your Trainer</h2>
               <div className="flex items-center gap-2 px-4 py-2 bg-[#01A0E2]/10 dark:bg-[#01A0E2]/30 rounded-xl border border-[#01A0E2]/20 dark:border-[#01A0E2]/50">
                 <Icon icon="solar:star-bold" className="text-yellow-500" />
@@ -714,21 +714,21 @@ const CourseDetails = ({ slug }: { slug: string }) => {
               </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-gray-100 dark:border-gray-800 relative overflow-hidden group">
+            <div className="bg-white dark:bg-gray-900 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-gray-100 dark:border-gray-800 relative overflow-hidden group mt-12 md:mt-8">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#01A0E2]/10 dark:bg-[#01A0E2]/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-              <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
-                <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-xl ring-4 ring-white dark:ring-gray-800 shrink-0">
+              <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-start text-left">
+                <div className="relative w-32 h-32 md:w-44 md:h-44 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl ring-4 ring-white dark:ring-gray-800 shrink-0">
                   <Image src={course.instructor.image} alt={course.instructor.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
                 </div>
 
-                <div className="space-y-6 flex-1">
+                <div className="space-y-4 flex-1">
                   <div>
-                    <h3 className="text-3xl font-extrabold dark:text-white mb-2">{course.instructor.name}</h3>
-                    <p className="text-blue-600 font-bold text-lg">{course.instructor.designation}</p>
+                    <h3 className="text-2xl font-extrabold dark:text-white mb-1">{course.instructor.name}</h3>
+                    <p className="text-blue-600 font-bold text-base">{course.instructor.designation}</p>
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                  <div className="flex flex-wrap items-center justify-start gap-4">
                     <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800/50 px-4 py-2 rounded-xl border border-gray-100 dark:border-gray-800">
                       <Icon icon="solar:case-outline" className="text-blue-600" />
                       <span className="text-sm font-bold dark:text-gray-300">{course.instructor.experience} Exp.</span>
@@ -739,19 +739,19 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed text-justify italic">
+                  <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed text-left italic">
                     "{course.instructor.bio}"
                   </p>
 
-                  <div className="pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-center md:justify-start gap-6">
-                    <div className="text-center md:text-left">
-                      <p className="text-2xl font-black text-blue-600">5k+</p>
-                      <p className="text-xs uppercase font-bold tracking-widest text-gray-400">Students Taught</p>
+                  <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex justify-start gap-4">
+                    <div className="text-left">
+                      <p className="text-xl font-black text-blue-600">5k+</p>
+                      <p className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Students Taught</p>
                     </div>
-                    <div className="w-px h-10 bg-gray-100 dark:bg-gray-800"></div>
-                    <div className="text-center md:text-left">
-                      <p className="text-2xl font-black text-blue-600">4.9/5</p>
-                      <p className="text-xs uppercase font-bold tracking-widest text-gray-400">Avg. Rating</p>
+                    <div className="w-px h-8 bg-gray-100 dark:bg-gray-800"></div>
+                    <div className="text-left">
+                      <p className="text-xl font-black text-blue-600">4.9/5</p>
+                      <p className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Avg. Rating</p>
                     </div>
                   </div>
                 </div>
@@ -761,21 +761,21 @@ const CourseDetails = ({ slug }: { slug: string }) => {
         )}
       </main>
 
-      <section className="container mx-auto max-w-7xl px-4 -mt-24 w-fit">
-        <div className="bg-[#081738] rounded-[3rem] p-10 md:p-15 text-center text-white relative overflow-hidden">
+      <section className="container mx-auto max-w-7xl px-4 -mt-16 md:-mt-24 w-fit -mb-24 md:mb-0">
+        <div className="bg-[#081738] rounded-[2rem] md:rounded-[3rem] p-6 md:p-15 text-left md:text-center text-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
             <div className="absolute top-[-50%] left-[-20%] w-[100%] h-[150%] bg-blue-500 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-50%] right-[-20%] w-[80%] h-[120%] bg-indigo-500 rounded-full blur-[100px]"></div>
           </div>
-          <div className="relative z-10 space-y-8 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-black font-primary">Start Your Learning Journey Today</h2>
-            <p className="text-lg md:text-xl text-blue-100/80 leading-relaxed font-medium">
+          <div className="relative z-10 space-y-8 max-w-3xl mx-0 md:mx-auto">
+            <h2 className="text-3xl md:text-6xl font-black font-primary">Start Your Learning Journey Today</h2>
+            <p className="text-base md:text-xl text-blue-100/80 leading-relaxed font-medium">
               Limited seats available for the upcoming cohort. Master in-demand skills and accelerate your career path with industry experts.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center gap-4 pt-4">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-10 py-5 bg-white text-blue-900 font-black rounded-2xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5 active:scale-95 w-full sm:w-auto text-lg"
+                className="px-6 py-3 bg-white text-blue-900 font-black rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5 active:scale-95 w-full sm:w-auto text-sm md:text-base"
               >
                 Enroll Today
               </button>
@@ -783,12 +783,12 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                 <a
                   href={`/syllabus/${syllabusMap[slug]}`}
                   download
-                  className="px-10 py-5 bg-transparent border-2 border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all w-full sm:w-auto text-lg text-center"
+                  className="px-6 py-3 bg-transparent border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto text-sm md:text-base text-center"
                 >
                   Download Syllabus
                 </a>
               ) : (
-                <span className="px-10 py-5 border-2 border-white/10 text-white/50 rounded-2xl text-lg cursor-not-allowed">
+                <span className="px-6 py-3 border-2 border-white/10 text-white/50 rounded-xl text-sm cursor-not-allowed">
                   Syllabus Not Available
                 </span>
               )}

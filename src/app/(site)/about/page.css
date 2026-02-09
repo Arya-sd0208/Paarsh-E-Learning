@@ -40,7 +40,7 @@
   padding: 0px 2px 0px 2px;
   flex-wrap: wrap;
   /* max-width: 580px; */
-  text-align: justify;
+  text-align: left;
   margin-bottom: 40px;
 }
 
@@ -161,6 +161,6 @@
   }
 
   .mission-vision-container {
-    text-align: justify;
+    text-align: left;
   }
 }

@@ -537,10 +537,10 @@ const Counter = ({ isColorMode }: { isColorMode: boolean }) => {
                         key={course.id}
                         className="
                             snap-start
-                            min-w-[240px] max-w-[240px]
-                            sm:min-w-[280px] sm:max-w-[280px]
-                            md:min-w-[310px] md:max-w-[310px]
-                            lg:min-w-[330px] lg:max-w-[330px]
+                            min-w-[220px] max-w-[220px]
+                            sm:min-w-[260px] sm:max-w-[260px]
+                            md:min-w-[290px] md:max-w-[290px]
+                            lg:min-w-[310px] lg:max-w-[310px]
                             "
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: 'spring', stiffness: 120 }}

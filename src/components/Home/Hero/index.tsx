@@ -87,9 +87,6 @@
 // export default Hero
 
 
-
-
-
 'use client'
 import { getImgPath } from '@/utils/image'
 import Image from 'next/image'
@@ -160,17 +157,14 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Content - Unique Floating Image Frame */}
         <div
           className="md:col-span-6 col-span-12 relative flex justify-center items-center"
           data-aos='fade-left'
           data-aos-duration='1200'>
 
           <div className="relative w-full">
-            {/* The background organic blob shape from the image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] bg-primary/5 rounded-[60px] rotate-6 border border-primary/10"></div>
 
-            {/* Main Image Frame */}
             <div className="relative overflow-hidden rounded-[30px] md:rounded-[45px] border-[6px] md:border-[10px] border-white shadow-2xl z-10 max-h-[300px] md:max-h-[400px] lg:max-h-[450px]">
               <Image
                 src={getImgPath('/images/hero/elearn.png')}
@@ -181,8 +175,8 @@ const Hero = () => {
                 quality={100}
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
               />
-            </div>
-
+            </div>   
+ 
             {/* Floating Info Card */}
             <div className="absolute -bottom-6 -right-4 bg-white dark:bg-slate-800 p-3 rounded-3xl shadow-2xl border border-primary/10 z-20 hidden lg:block">
               <div className="flex items-center gap-4">

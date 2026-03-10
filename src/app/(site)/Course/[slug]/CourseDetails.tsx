@@ -249,7 +249,7 @@ import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { coursesData } from "@/data/coursesData";
 import { Toaster } from 'react-hot-toast';
-import EnrollModal from "@/components/SharedComponent/Course/EnrollModal";
+
 // import VideoPlayer from '@/components/SharedComponent/Course/VideoPlayer';
 import { getImgPath } from '@/utils/image';
 
@@ -310,8 +310,33 @@ interface CourseType {
 const CourseDetails = ({ slug }: { slug: string }) => {
   const [course, setCourse] = useState<CourseType | null>(null);
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
+
+  // Helper: check if user is authenticated via the custom cookie-based auth
+  const isAuthenticated = () => {
+    return document.cookie.split(";").some((c) => c.trim().startsWith("token="));
+  };
+
+  const triggerDownload = (filePath: string) => {
+    const link = document.createElement("a");
+    link.href = filePath;
+    link.download = filePath.split("/").pop() || "syllabus.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleDownloadSyllabus = (fileName: string) => {
+    if (isAuthenticated()) {
+      // User is signed in — trigger the download directly
+      triggerDownload(`/syllabus/${fileName}`);
+    } else {
+      // Not signed in — save syllabus path and redirect to signup with returnUrl
+      const currentUrl = window.location.href;
+      sessionStorage.setItem("pendingSyllabusDownload", `/syllabus/${fileName}`);
+      router.push(`/signup?returnUrl=${encodeURIComponent(currentUrl)}`);
+    }
+  };
 
   useEffect(() => {
     if (slug) {
@@ -319,6 +344,29 @@ const CourseDetails = ({ slug }: { slug: string }) => {
       setCourse(foundCourse || (null as any));
     }
   }, [slug]);
+
+  // After redirect back from signin, auto-download the pending syllabus once cookie appears
+  useEffect(() => {
+    const pendingDownload = sessionStorage.getItem("pendingSyllabusDownload");
+    if (!pendingDownload) return;
+
+    if (isAuthenticated()) {
+      // Already authenticated on mount — download immediately
+      sessionStorage.removeItem("pendingSyllabusDownload");
+      triggerDownload(pendingDownload);
+    } else {
+      // Poll until cookie appears (signin sets cookie via document.cookie)
+      const interval = setInterval(() => {
+        if (isAuthenticated()) {
+          clearInterval(interval);
+          sessionStorage.removeItem("pendingSyllabusDownload");
+          triggerDownload(pendingDownload);
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const toggleAccordion = (index: number) => {
     setActiveAccordion(activeAccordion === index ? null : index);
@@ -377,7 +425,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
 
 
   return (
-    <div className="bg-[#F8FAFC] dark:bg-darkmode min-h-screen pt-20 pb-20">
+    <div className="bg-[#F8FAFC] dark:bg-darkmode min-h-screen pt-20 pb-10">
       {/* Breadcrumbs */}
       <nav className="container mx-auto px-4 py-2 text-sm font-medium">
         <ol className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
@@ -390,83 +438,85 @@ const CourseDetails = ({ slug }: { slug: string }) => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#1E3A8A] via-[#3B82F6] to-[#6366F1] py-8 md:py-14 px-4">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#1E3A8A] via-[#3B82F6] to-[#6366F1] py-6 md:py-10 px-4 h-[400px]">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 transform translate-x-20"></div>
-        <div className="container mx-auto max-w-7xl relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="container mx-auto max-w-7xl relative z-10 grid lg:grid-cols-12 gap-10 items-center">
           <div className="text-white lg:col-span-6">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="px-2.5 py-0.5 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-wider">
                 {course.level || 'Featured'}
               </span>
-              <span className="text-white/60 text-sm">Course &gt; {course.level || 'Development'}</span>
+              <span className="text-white/60 text-xs">Course &gt; {course.level || 'Development'}</span>
             </div>
-            <h1 className="text-3xl md:text-6xl font-extrabold mb-4 leading-tight">
+            <h1 className="text-2xl md:text-3xl font-extrabold mb-3 leading-tight">
               {course.name}
             </h1>
-            <p className="text-base md:text-xl text-blue-50 mb-6 max-w-xl opacity-90 leading-relaxed">
+            <p className="text-sm md:text-base text-blue-50 mb-5 max-w-lg opacity-90 leading-relaxed">
               {course.description}
             </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-sm border border-white/10">
-                <Icon icon="solar:user-bold" className="text-yellow-400" />
-                <span className="text-sm font-bold">{course.reviews || '1.2k'} Students Enrolled</span>
+            <div className="flex flex-wrap gap-3">
+              <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10">
+                <Icon icon="solar:user-bold" className="text-yellow-400 w-4 h-4" />
+                <span className="text-xs font-bold">{course.reviews || '1.2k'} Students Enrolled</span>
               </div>
             </div>
           </div>
 
-          <div className="relative group lg:col-span-6 w-full lg:-mt-12">
-            <div className="absolute inset-0 bg-blue-400 blur-3xl opacity-20 group-hover:opacity-30 transition-opacity rounded-full"></div>
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 aspect-video w-full bg-black">
-              <video
-                src={getImgPath("/images/course/WhatsApp Video 2026-02-07 at 1.46.56 PM.mp4")}
-                controls
-                className="w-full h-full object-contain"
-                poster={course.detailsImage || course.image}
-              >
-                Your browser does not support the video tag.
-              </video>
+          <div className="relative group lg:col-span-6 w-full lg:-mt-12 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[500px] h-[250px] mt-15">
+              <div className="absolute inset-0 bg-blue-400 blur-3xl opacity-20 group-hover:opacity-30 transition-opacity rounded-full"></div>
+              <div className="relative h-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 bg-black">
+                <video
+                  src={getImgPath("/images/course/WhatsApp Video 2026-02-07 at 1.46.56 PM.mp4")}
+                  controls
+                  className="w-full h-full object-cover"
+                  poster={course.detailsImage || course.image}
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Meta Info Bar */}
-      <div className="container mx-auto max-w-7xl px-4 -mt-8 relative z-20">
-        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-4 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 border border-gray-100 dark:border-gray-800">
+      <div className="container mx-auto max-w-7xl px-4 -mt-6 relative z-20">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-3 md:p-5 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 border border-gray-100 dark:border-gray-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-50 dark:bg-blue-900/30 rounded-xl flex items-center justify-center text-blue-600">
-              <Icon icon="solar:clock-circle-bold" className="w-5 h-5 md:w-6 md:h-6" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center text-blue-600">
+              <Icon icon="solar:clock-circle-bold" className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Duration</p>
-              <p className="text-xs md:text-base font-bold dark:text-white">{course.duration || '8 Weeks'}</p>
+              <p className="text-[9px] text-gray-500 uppercase font-bold tracking-wider">Duration</p>
+              <p className="text-xs md:text-sm font-bold dark:text-white">{course.duration || '8 Weeks'}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-green-50 dark:bg-green-900/30 rounded-xl flex items-center justify-center text-green-600">
-              <Icon icon="solar:chart-square-bold" className="w-5 h-5 md:w-6 md:h-6" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-green-50 dark:bg-green-900/30 rounded-lg flex items-center justify-center text-green-600">
+              <Icon icon="solar:chart-square-bold" className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Skill Level</p>
-              <p className="text-xs md:text-base font-bold dark:text-white">{course.level || 'Beginner'}</p>
+              <p className="text-[9px] text-gray-500 uppercase font-bold tracking-wider">Skill Level</p>
+              <p className="text-xs md:text-sm font-bold dark:text-white">{course.level || 'Beginner'}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-50 dark:bg-purple-900/30 rounded-xl flex items-center justify-center text-purple-600">
-              <Icon icon="solar:laptop-bold" className="w-5 h-5 md:w-6 md:h-6" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-purple-50 dark:bg-purple-900/30 rounded-lg flex items-center justify-center text-purple-600">
+              <Icon icon="solar:laptop-bold" className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Learning Mode</p>
-              <p className="text-xs md:text-base font-bold dark:text-white">{course.mode || 'Self-Paced'}</p>
+              <p className="text-[9px] text-gray-500 uppercase font-bold tracking-wider">Learning Mode</p>
+              <p className="text-xs md:text-sm font-bold dark:text-white">{course.mode || 'Self-Paced'}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-yellow-50 dark:bg-yellow-900/30 rounded-xl flex items-center justify-center text-yellow-600">
-              <Icon icon="solar:star-bold" className="w-5 h-5 md:w-6 md:h-6" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center text-yellow-600">
+              <Icon icon="solar:star-bold" className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Reviews</p>
-              <div className="flex items-center gap-1 font-bold dark:text-white text-xs md:text-base">
+              <p className="text-[9px] text-gray-500 uppercase font-bold tracking-wider">Reviews</p>
+              <div className="flex items-center gap-1 font-bold dark:text-white text-xs md:text-sm">
                 <span>{course.rating || '4.8'}</span>
                 <div className="flex text-yellow-500">
                   <Icon icon="material-symbols:star-rounded" />
@@ -485,69 +535,50 @@ const CourseDetails = ({ slug }: { slug: string }) => {
           {/* Left Column: Course Details */}
           <div className="lg:col-span-8 space-y-2">
 
-            {/* What You'll Learn */}
-            {/* {course.whatYouLearn && (
-              <section className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-sm border border-gray-100 dark:border-gray-800">
-                <h2 className="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
-                <h2 className="text-2xl font-bold mb-8 text-[#2B4278] dark:text-white flex items-center gap-3">
-                  <span className="w-8 h-8 bg-[#01A0E2] rounded-lg flex items-center justify-center text-white text-sm">?</span>
-                  What You'll Learn
-                </h2>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {course.whatYouLearn.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        <Icon icon="solar:check-circle-bold" className="text-[#01A0E2]" width="20" />
-                      </div>
-                      <p className="text-gray-600 dark:text-gray-400 font-medium">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )} */}
+
 
             {/* Course Overview */}
-            <section className="space-y-4">
-              <h2 className="text-2xl font-bold text-[#2B4278] dark:text-white">Course Overview</h2>
+            <section className="space-y-3">
+              <h2 className="text-xl font-bold text-[#2B4278] dark:text-white">Course Overview</h2>
               <div className="prose prose-blue dark:prose-invert max-w-none">
-                <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400 text-justify">
+                <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400 text-justify">
                   {course.overview}
                 </p>
               </div>
             </section>
 
             {/* Curriculum */}
-            <section className="space-y-2 -mt-19">
-              <h2 className="text-2xl font-bold text-[#2B4278] dark:text-white">Course Curriculum</h2>
-              <div className="space-y-4">
+            <section className="space-y-4 -mt-24">
+              <h2 className="text-xl font-bold text-[#2B4278] dark:text-white">Course Curriculum</h2>
+              <div className="space-y-3 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
                 {course.curriculum.map((item, index) => (
-                  <div key={index} className={`group bg-white dark:bg-gray-900 border ${activeAccordion === index ? 'border-[#01A0E2] ring-1 ring-[#01A0E2]/20' : 'border-gray-100 dark:border-gray-800'} rounded-2xl overflow-hidden transition-all duration-300 shadow-sm`}>
+                  <div key={index} className={`group bg-white dark:bg-gray-900 border ${activeAccordion === index ? 'border-[#01A0E2] ring-1 ring-[#01A0E2]/20' : 'border-gray-100 dark:border-gray-800'} rounded-xl overflow-hidden transition-all duration-300 shadow-sm`}>
                     <div
-                      className="p-4 md:p-6 flex items-center justify-between cursor-pointer"
+                      className="p-3 md:p-4 flex items-center justify-between cursor-pointer"
                       onClick={() => toggleAccordion(index)}
                     >
-                      <div className="flex items-center gap-4">
-                        <div className={`w-10 h-10 ${activeAccordion === index ? 'bg-[#01A0E2] text-white' : 'bg-gray-50 dark:bg-gray-800 text-gray-500'} rounded-full flex items-center justify-center font-bold group-hover:bg-[#01A0E2] group-hover:text-white transition-all`}>
+                      <div className="flex items-center gap-3">
+                        <div className={`w-8 h-8 ${activeAccordion === index ? 'bg-[#01A0E2] text-white' : 'bg-gray-50 dark:bg-gray-800 text-gray-500'} rounded-full flex items-center justify-center text-sm font-bold group-hover:bg-[#01A0E2] group-hover:text-white transition-all`}>
                           {index + 1}
                         </div>
                         <div>
-                          <p className="text-[10px] uppercase font-bold tracking-widest text-[#01A0E2] mb-0.5">Module {index + 1}</p>
-                          <h3 className={`font-bold dark:text-white ${activeAccordion === index ? 'text-[#01A0E2]' : 'group-hover:text-[#2B4278]'} transition-colors`}>{item.title}</h3>
+                          <p className="text-[9px] uppercase font-bold tracking-widest text-[#01A0E2] mb-0.5">Module {index + 1}</p>
+                          <h3 className={`text-sm font-bold dark:text-white ${activeAccordion === index ? 'text-[#01A0E2]' : 'group-hover:text-[#2B4278]'} transition-colors`}>{item.title}</h3>
                           {activeAccordion !== index && (
-                            <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1">{item.topics}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">{item.topics}</p>
                           )}
                         </div>
                       </div>
                       <Icon
                         icon="solar:alt-arrow-down-linear"
-                        className={`text-gray-400 ${activeAccordion === index ? 'text-[#01A0E2] rotate-180' : 'group-hover:text-[#01A0E2]'} transition-transform`}
+                        className={`text-gray-400 w-4 h-4 ${activeAccordion === index ? 'text-[#01A0E2] rotate-180' : 'group-hover:text-[#01A0E2]'} transition-transform`}
                       />
                     </div>
 
                     {/* Accordion Content */}
                     <div className={`transition-all duration-300 ease-in-out ${activeAccordion === index ? 'max-h-[500px] opacity-100 border-t border-gray-100 dark:border-gray-800' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-                      <div className="p-4 md:p-6 bg-[#01A0E2]/5 dark:bg-[#01A0E2]/10">
-                        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                      <div className="p-3 md:p-5 bg-[#01A0E2]/5 dark:bg-[#01A0E2]/10">
+                        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
                           {item.topics}
                         </p>
                       </div>
@@ -556,6 +587,37 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                 ))}
               </div>
             </section>
+
+            {/* What You'll Learn */}
+            {course.whatYouLearn && course.whatYouLearn.length > 0 && (
+              <section className="p-2 md:p-4 lg:p-6">
+                <div className="relative z-10">
+                  <h2 className="text-xl md:text-2xl font-bold mb-2 text-[#2B4278] dark:text-white flex items-center gap-4 -mt-10">
+                    <div className="w-14 h-14 bg-white dark:bg-gray-800 shadow-lg rounded-2xl flex items-center justify-center border border-gray-50 dark:border-gray-700 -mt-12 ">
+                      <Icon icon="solar:lightbulb-bolt-bold-duotone" className="text-[#01A0E2] w-8 h-8" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[12px] uppercase tracking-[0.2em] text-[#01A0E2] font-extrabold mb-1">Outcomes</span>
+                      <p className="text-[15px] md:text-lg font-bold mb-10 text-[#2B4278] dark:text-white">What You Will Learn</p>
+                    </div>
+                  </h2>
+
+                  <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                    {course.whatYouLearn.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-4 group/item">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-green-50 dark:bg-green-900/20 shadow-sm border border-green-100 dark:border-green-900/30 flex items-center justify-center group-hover/item:bg-[#01A0E2]/10 group-hover/item:border-[#01A0E2]/20 transition-all transform group-hover/item:scale-110">
+                          <Icon icon="solar:check-circle-bold-duotone" className="text-green-600 dark:text-green-400 w-5 h-5 group-hover/item:text-[#01A0E2]" />
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-[15px] md:text-sm text-gray-700 dark:text-gray-300 font-semibold leading-snug group-hover/item:text-[#2B4278] dark:group-hover/item:text-white transition-colors">{item}</p>
+                          <div className="w-0 group-hover/item:w-full h-0.5 bg-gradient-to-r from-[#01A0E2] to-transparent transition-all duration-500 opacity-50" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
 
             {/* Projects Section
             {course.projects && (
@@ -586,13 +648,13 @@ const CourseDetails = ({ slug }: { slug: string }) => {
             <div className="space-y-6">
 
               {/* Tools & Stack */}
-              {course.tools && (
-                <div className="bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 dark:border-gray-800">
-                  <h3 className="font-bold mb-6 flex items-center gap-2 text-[#2B4278] dark:text-white">
+              {/* {course.tools && (
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 md:p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+                  <h3 className="text-base font-bold mb-4 flex items-center gap-2 text-[#2B4278] dark:text-white">
                     <Icon icon="solar:box-bold" className="text-[#01A0E2]" />
                     Tools & Technologies
                   </h3>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="flex flex-wrap gap-3">
                     {course.tools.map((tool, idx) => {
                       const iconMap: { [key: string]: string } = {
                         'html5': 'logos:html-5',
@@ -619,37 +681,37 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                       const iconName = iconMap[tool.toLowerCase()] || `logos:${tool.toLowerCase()}`;
 
                       return (
-                        <div key={idx} className="w-10 h-10 bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center transition-all hover:bg-white dark:hover:bg-gray-700 hover:shadow-md cursor-help overflow-hidden p-1.5" title={tool}>
-                          <Icon icon={iconName} width="28" />
+                        <div key={idx} className="w-8 h-8 bg-gray-50 dark:bg-gray-800 rounded-lg flex items-center justify-center transition-all hover:bg-white dark:hover:bg-gray-700 hover:shadow-md cursor-help overflow-hidden p-1.5" title={tool}>
+                          <Icon icon={iconName} width="20" />
                         </div>
                       );
                     })}
                   </div>
                 </div>
-              )}
+              )} */}
 
               {/* Enrollment Card */}
-              <div className="bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-8 shadow-2xl border border-[#01A0E2]/10 dark:border-gray-800 ring-1 ring-[#01A0E2]/5 mt-4 md:mt-10">
-                {course.fee && (
-                  <div className="mb-6">
-                    <p className="text-gray-500 text-sm font-bold uppercase tracking-widest mb-1">Course Fee</p>
+              <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 md:p-6 shadow-2xl border border-[#01A0E2]/10 dark:border-gray-800 ring-1 ring-[#01A0E2]/5 mt-4 md:mt-6">
+                {/* {course.fee && (
+                  <div className="mb-4">
+                    <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-1">Course Fee</p>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl font-black text-[#01A0E2]">₹{course.fee.toLocaleString()}</span>
-                      <span className="text-gray-400 text-sm font-medium">/ Full Course</span>
+                      <span className="text-2xl font-black text-[#01A0E2]">₹{course.fee.toLocaleString()}</span>
+                      <span className="text-gray-400 text-xs font-medium">/ Full Course</span>
                     </div>
                   </div>
-                )}
+                )} */}
                 <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="w-full py-5 bg-[#01A0E2] hover:bg-[#2B4278] text-white font-black text-lg rounded-2xl shadow-lg shadow-[#01A0E2]/30 transition-all hover:scale-[1.02] active:scale-95 mb-4"
+                  onClick={() => router.push('/signup')}
+                  className="w-fit p-3 py-3.5 bg-[#01A0E2] hover:bg-[#2B4278] text-white font-black text-base rounded-xl shadow-lg shadow-[#01A0E2]/30 transition-all hover:scale-[1.02] active:scale-95 mb-4"
                 >
                   Enroll Now
                 </button>
                 {/* <div className="text-center text-xs text-gray-400 font-medium mb-8">100% Money-Back Guarantee</div> */}
 
-                <div className="space-y-5">
-                  <p className="text-sm font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3">This course includes:</p>
-                  <ul className="space-y-4">
+                <div className="space-y-4">
+                  <p className="text-xs font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-2">This course includes:</p>
+                  <ul className="space-y-3">
                     {[
                       { icon: "solar:video-library-bold", text: "85+ Video Lessons" },
                       { icon: "solar:play-stream-bold", text: "Live Class Access" },
@@ -657,8 +719,8 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                       { icon: "solar:checklist-minimalistic-bold", text: "Lifetime Access" },
                       { icon: "solar:medal-star-bold", text: "Certificate of Completion" }
                     ].map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 font-medium">
-                        <Icon icon={feature.icon} className="text-[#01A0E2]" width="20" />
+                      <li key={idx} className="flex items-center gap-2.5 text-xs text-gray-600 dark:text-gray-400 font-medium">
+                        <Icon icon={feature.icon} className="text-[#01A0E2]" width="16" />
                         {feature.text}
                       </li>
                     ))}
@@ -668,18 +730,18 @@ const CourseDetails = ({ slug }: { slug: string }) => {
 
 
               {/* Certification Banner */}
-              <div className="bg-gradient-to-br from-[#2B4278] to-[#01A0E2] rounded-3xl p-6 md:p-8 text-white relative overflow-hidden mt-12 md:mt-14">
-                <Icon icon="solar:medal-ribbon-bold" className="absolute bottom-[-20px] right-[-20px] w-40 h-40 text-white/5 -rotate-12" />
-                <div className="relative z-10 space-y-4">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
-                    <Icon icon="solar:verified-check-bold" className="text-[#01A0E2]" width="32" />
+              <div className="bg-gradient-to-br from-[#2B4278] to-[#01A0E2] rounded-2xl p-5 md:p-6 text-white relative overflow-hidden mt-6 md:mt-8">
+                <Icon icon="solar:medal-ribbon-bold" className="absolute bottom-[-15px] right-[-15px] w-32 h-32 text-white/5 -rotate-12" />
+                <div className="relative z-10 space-y-3">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center border border-white/20">
+                    <Icon icon="solar:verified-check-bold" className="text-[#01A0E2]" width="24" />
                   </div>
-                  <h3 className="text-xl font-bold font-primary">{course.certificationInfo?.title || 'Professional Certification'}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <h3 className="text-lg font-bold font-primary">{course.certificationInfo?.title || 'Professional Certification'}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">
                     {course.certificationInfo?.description || 'Get recognized by industry leaders with our professional certificate.'}
                   </p>
-                  <div className="pt-4">
-                    <div className="relative aspect-[16/11] w-full rounded-2xl border border-white/10 overflow-hidden group shadow-2xl">
+                  <div className="pt-2">
+                    <div className="relative aspect-[16/11] w-full max-w-[240px] mx-auto rounded-xl border border-white/10 overflow-hidden group shadow-2xl">
                       <Image
                         src={getImgPath('/images/testimonial/certificate.jpg')}
                         alt='Professional Certification'
@@ -688,9 +750,9 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                         unoptimized
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
-                      <div className="absolute bottom-4 left-4 right-4 text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg">
-                          <Icon icon="solar:verified-check-bold" className="text-[#01A0E2]" />
+                      <div className="absolute bottom-2 left-2 right-2 text-center">
+                        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-[8px] font-bold uppercase tracking-widest text-white shadow-lg">
+                          <Icon icon="solar:verified-check-bold" className="text-[#01A0E2] w-3 h-3" />
                           Industry Recognized
                         </div>
                       </div>
@@ -699,94 +761,83 @@ const CourseDetails = ({ slug }: { slug: string }) => {
                 </div>
               </div>
 
+              {/* Meet Your Trainer Sidebar Card */}
+              {course.instructor && (
+                <div className="bg-white dark:bg-gray-900 rounded-2xl p-5 md:p-6 shadow-sm border border-gray-100 dark:border-gray-800 relative overflow-hidden group mt-8">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#01A0E2]/5 dark:bg-[#01A0E2]/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10"></div>
+                  <div className="relative z-10 space-y-4">
+                    <h3 className="text-base font-bold text-[#2B4278] dark:text-white flex items-center gap-2">
+                      <Icon icon="solar:user-speak-bold" className="text-[#01A0E2]" />
+                      Meet Your Trainer
+                    </h3>
+                    <div className="flex items-center gap-4">
+                      <div className="relative w-16 h-16 rounded-xl overflow-hidden shadow-md ring-2 ring-white dark:ring-gray-800 shrink-0">
+                        <Image src={course.instructor.image} alt={course.instructor.name} fill className="object-cover" unoptimized />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-extrabold dark:text-white">{course.instructor.name}</h4>
+                        <p className="text-blue-600 font-bold text-[10px]">{course.instructor.designation}</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          <Icon icon="solar:star-bold" className="text-yellow-500 w-3 h-3" />
+                          <span className="text-[10px] font-bold dark:text-gray-300">{course.instructor.rating}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800/50 px-2 py-1 rounded-lg border border-gray-100 dark:border-gray-800 w-fit">
+                        <Icon icon="solar:case-outline" className="text-blue-600 w-3 h-3" />
+                        <span className="text-[10px] font-bold dark:text-gray-300">{course.instructor.experience} Exp.</span>
+                      </div>
+                      <p className="text-[11px] text-gray-600 dark:text-gray-400 leading-relaxed italic line-clamp-3">
+                        "{course.instructor.bio}"
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex justify-between">
+                      <div className="text-left">
+                        <p className="text-sm font-black text-blue-600">5k+</p>
+                        <p className="text-[8px] uppercase font-bold tracking-widest text-gray-400">Students</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-black text-blue-600">{course.instructor.reviewsCount}+</p>
+                        <p className="text-[8px] uppercase font-bold tracking-widest text-gray-400">Reviews</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
             </div>
           </aside>
         </div>
 
-        {course.instructor && (
-          <section className="space-y-4 border-t border-gray-100 dark:border-gray-800 mt-14 md:mt-2 pt-2 pb-0 md:pb-0">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
-              <h2 className="text-2xl font-bold text-[#2B4278] dark:text-white">Meet Your Trainer</h2>
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#01A0E2]/10 dark:bg-[#01A0E2]/30 rounded-xl border border-[#01A0E2]/20 dark:border-[#01A0E2]/50">
-                <Icon icon="solar:star-bold" className="text-yellow-500" />
-                <span className="font-bold text-[#2B4278] dark:text-blue-100">{course.instructor.rating}</span>
-                <span className="text-sm text-[#01A0E2] dark:text-[#01A0E2] font-medium">({course.instructor.reviewsCount} Reviews)</span>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-gray-900 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-gray-100 dark:border-gray-800 relative overflow-hidden group mt-12 md:mt-8">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#01A0E2]/10 dark:bg-[#01A0E2]/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-              <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-start text-left">
-                <div className="relative w-32 h-32 md:w-44 md:h-44 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl ring-4 ring-white dark:ring-gray-800 shrink-0">
-                  <Image src={course.instructor.image} alt={course.instructor.name} fill className="object-cover group-hover:scale-105 transition-transform duration-700" unoptimized />
-                </div>
-
-                <div className="space-y-4 flex-1">
-                  <div>
-                    <h3 className="text-2xl font-extrabold dark:text-white mb-1">{course.instructor.name}</h3>
-                    <p className="text-blue-600 font-bold text-base">{course.instructor.designation}</p>
-                  </div>
-
-                  <div className="flex flex-wrap items-center justify-start gap-4">
-                    <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800/50 px-4 py-2 rounded-xl border border-gray-100 dark:border-gray-800">
-                      <Icon icon="solar:case-outline" className="text-blue-600" />
-                      <span className="text-sm font-bold dark:text-gray-300">{course.instructor.experience} Exp.</span>
-                    </div>
-                    <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800/50 px-4 py-2 rounded-xl border border-gray-100 dark:border-gray-800">
-                      <Icon icon="solar:verified-check-bold" className="text-green-600" />
-                      <span className="text-sm font-bold dark:text-gray-300">Certified Expert</span>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed text-left italic">
-                    "{course.instructor.bio}"
-                  </p>
-
-                  <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex justify-start gap-4">
-                    <div className="text-left">
-                      <p className="text-xl font-black text-blue-600">5k+</p>
-                      <p className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Students Taught</p>
-                    </div>
-                    <div className="w-px h-8 bg-gray-100 dark:bg-gray-800"></div>
-                    <div className="text-left">
-                      <p className="text-xl font-black text-blue-600">4.9/5</p>
-                      <p className="text-[10px] uppercase font-bold tracking-widest text-gray-400">Avg. Rating</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
       </main>
 
-      <section className="container mx-auto max-w-7xl px-4 -mt-16 md:-mt-24 w-fit -mb-24 md:mb-0">
-        <div className="bg-[#081738] rounded-[2rem] md:rounded-[3rem] p-6 md:p-15 text-left md:text-center text-white relative overflow-hidden">
+      <section className="container mx-auto max-w-6xl px-4 -mt-16 md:-mt-24 w-fit mb-0">
+        <div className="bg-[#081738] rounded-[2rem] md:rounded-[3rem] p-2 md:p-8 text-left md:text-center text-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
             <div className="absolute top-[-50%] left-[-20%] w-[100%] h-[150%] bg-blue-500 rounded-full blur-[120px]"></div>
             <div className="absolute bottom-[-50%] right-[-20%] w-[80%] h-[120%] bg-indigo-500 rounded-full blur-[100px]"></div>
           </div>
           <div className="relative z-10 space-y-8 max-w-3xl mx-0 md:mx-auto">
-            <h2 className="text-3xl md:text-6xl font-black font-primary">Start Your Learning Journey Today</h2>
-            <p className="text-base md:text-xl text-blue-100/80 leading-relaxed font-medium">
+            <h2 className="text-2xl md:text-4xl font-black font-primary">Start Your Learning Journey Today</h2>
+            <p className="text-base md:text-lg text-blue-100/80 leading-relaxed font-medium">
               Limited seats available for the upcoming cohort. Master in-demand skills and accelerate your career path with industry experts.
             </p>
             <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center gap-4 pt-4">
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => router.push('/signup')}
                 className="px-6 py-3 bg-white text-blue-900 font-black rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5 active:scale-95 w-full sm:w-auto text-sm md:text-base"
               >
                 Enroll Today
               </button>
               {syllabusMap[slug] ? (
-                <a
-                  href={`/syllabus/${syllabusMap[slug]}`}
-                  download
-                  className="px-6 py-3 bg-transparent border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto text-sm md:text-base text-center"
+                <button
+                  onClick={() => handleDownloadSyllabus(syllabusMap[slug])}
+                  className="px-6 py-3 bg-transparent border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all w-full sm:w-auto text-sm md:text-base text-center flex items-center justify-center gap-2"
                 >
+                  <Icon icon="solar:file-download-bold" width="18" />
                   Download Syllabus
-                </a>
+                </button>
               ) : (
                 <span className="px-6 py-3 border-2 border-white/10 text-white/50 rounded-xl text-sm cursor-not-allowed">
                   Syllabus Not Available
@@ -797,11 +848,7 @@ const CourseDetails = ({ slug }: { slug: string }) => {
           </div>
         </div>
       </section>
-      <EnrollModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        courseName={course.name}
-      />
+
       <Toaster position="bottom-right" />
     </div>
   );

@@ -27,8 +27,17 @@
 
 @media (max-width: 768px) {
   .about-text p {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text p {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 0.9rem;
   }
 }
 
@@ -59,19 +68,33 @@
 
 @media (max-width: 768px) {
   .social-media-container {
-    padding: 24px;
+    padding: 20px;
+    width: 92%;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-media-container {
+    padding: 16px;
     width: 95%;
-    border-radius: 30px;
+    border-radius: 15px;
   }
 }
 
 
 .founder-text {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 900;
   color: #1e3a8a;
   margin: 0;
   letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .founder-text {
+    font-size: 2.5rem;
+  }
 }
 
 .ceo-text {

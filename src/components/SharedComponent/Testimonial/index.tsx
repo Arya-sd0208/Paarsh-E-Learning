@@ -63,7 +63,7 @@ import { achievements } from '@/app/api/data'
 const Testimonial = () => {
   return (
     <section
-      className={`relative overflow-hidden scroll-mt-24 py-20 lg:py-32 bg-section dark:bg-darklight`}
+      className={`relative overflow-hidden scroll-mt-24 py-15 lg:py-20 bg-section dark:bg-darklight`}
       id='testimonials'
     >
       {/* Decorative Background Elements */}
@@ -71,14 +71,14 @@ const Testimonial = () => {
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className='container mx-auto max-w-7xl px-4 relative z-10'>
-        <div className="text-center mb-10 md:mb-14">
+        <div className='text-center'>
           <div className='inline-flex items-center gap-2 bg-primary/5 dark:bg-primary/20 px-4 py-1.5 rounded-full border border-primary/10 mb-6'>
             <span className='w-2 h-2 rounded-full bg-primary animate-pulse'></span>
             <span className='font-bold text-primary dark:text-primary-light text-xs uppercase tracking-widest'>
               Value Proposition
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-primary dark:text-white mb-6 tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-black text-primary dark:text-white tracking-tight">
             Our <span className="text-secondary relative">Benefits
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 150 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 9C20 4 50 2 75 2C100 2 130 4 147 9" stroke="#01A0E2" strokeWidth="4" strokeLinecap="round" />
@@ -87,7 +87,7 @@ const Testimonial = () => {
           </h2>
         </div>
 
-        <div className='grid lg:grid-cols-2 gap-8 lg:gap-14 items-center min-h-[500px]'>
+        <div className='grid lg:grid-cols-2 gap-8 lg:gap-14 items-center min-h-[auto] lg:min-h-[500px] mt-8 lg:-mt-15 mb-10 lg:-mb-20'>
           {/* Illustration with Floating Effect */}
           <div
             className='relative flex justify-center order-2 lg:order-2 group h-full items-center'

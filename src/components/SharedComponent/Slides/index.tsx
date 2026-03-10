@@ -10,15 +10,34 @@ const Slides = () => {
 
     const achievements = [
         { src: "/images/achievements/tata.png", alt: "Tata logo", size: 0.8 },
-        { src: "/images/achievements/react.png", alt: "React logo" },
+        { src: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg", alt: "Infosys logo" },
+        { src: "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg", alt: "IBM logo" },
+        { src: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg", alt: "Wipro logo" },
+        { src: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg", alt: "Accenture logo" },
         { src: "/images/achievements/microsoft.jpg", alt: "Microsoft logo" },
         { src: "/images/achievements/google.webp", alt: "Google logo" },
         { src: "/images/achievements/amazon.png", alt: "Amazon logo" },
     ];
 
-    const visibleCount = 4;
-    const totalSlides = achievements.length;
+    const [visibleCount, setVisibleCount] = useState(4);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 640) {
+                setVisibleCount(2);
+            } else if (window.innerWidth < 1024) {
+                setVisibleCount(3);
+            } else {
+                setVisibleCount(4);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const totalSlides = achievements.length;
     const extendedSlides = [...achievements, ...achievements.slice(0, visibleCount)];
 
     useEffect(() => {
@@ -72,8 +91,7 @@ const Slides = () => {
                 {extendedSlides.map((logo, idx) => (
                     <div
                         key={idx}
-                        className="flex-shrink-0 flex justify-center items-center h-24"
-                        // className="flex-shrink-0 flex justify-center items-center px-2"
+                        className="flex-shrink-0 flex justify-center items-center h-24 px-5"
                         style={{ width: `${100 / visibleCount}%` }}
                     >
                         <Image
@@ -91,7 +109,7 @@ const Slides = () => {
 
 
                             src={logo.src}
-                            alt={logo.alt}
+                            alt={logo.alt || "Achievement logo"}
                             width={(logo.size ?? 1) * 200}
                             height={(logo.size ?? 1) * 70}
                             className="object-contain" />

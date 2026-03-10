@@ -16,6 +16,7 @@ export const coursesData = [
     rating: 4.7,
     reviews: '800+',
     fee: 45000,
+    whatYouLearn: ["Master C syntax and fundamental programming logic", "Understand memory management and pointer arithmetic", "Work with arrays, strings, and user-defined data structures", "Implement file handling and preprocessor directives"],
 
     instructor: {
       name: 'Amit Kulkarni',
@@ -56,6 +57,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '1.2k',
     fee: 45000,
+    whatYouLearn: ["Master Object-Oriented Programming (OOP) in C++", "Understand classes, inheritance, and polymorphism", "Use Standard Template Library (STL) efficiently", "Handle exceptions and file I/O operations"],
 
     instructor: {
       name: 'Amit Kulkarni',
@@ -100,6 +102,7 @@ export const coursesData = [
     rating: 4.9,
     reviews: '2.5k',
     fee: 45000,
+    whatYouLearn: ["Master Python syntax and core programming concepts", "Understand Object-Oriented Programming in Python", "Automate tasks using Python scripts and libraries", "Perform data analysis with NumPy and Pandas"],
 
     instructor: {
       name: 'Amit Kulkarni',
@@ -141,6 +144,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '1.5k',
     fee: 45000,
+    whatYouLearn: ["Build a strong foundation in Java and JVM architecture", "Master Object-Oriented Programming (OOP) paradigms", "Handle exceptions and multi-threading", "Work with Java Collections Framework and JDBC"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -182,6 +186,7 @@ export const coursesData = [
     rating: 4.7,
     reviews: '450+',
     fee: 45000,
+    whatYouLearn: ["Learn modern Android development with Kotlin", "Understand Kotlin syntax, null safety, and coroutines", "Build responsive UI with Android XML and fragments", "Integrate RESTful APIs and local databases"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -221,6 +226,7 @@ export const coursesData = [
     rating: 4.9,
     reviews: '300+',
     fee: 45000,
+    whatYouLearn: ["Understand memory safety without a garbage collector", "Master ownership, borrowing, and lifetime rules", "Build high-performance system applications", "Implement safe concurrency and asynchronous code"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -265,6 +271,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '2.1k',
     fee: 45000,
+    whatYouLearn: ["Write complex SQL queries for data extraction", "Perform data aggregation and multi-table joins", "Use window functions for advanced analytical reporting", "Optimize queries for large-scale data analysis"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -305,6 +312,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '1.1k',
     fee: 45000,
+    whatYouLearn: ["Build enterprise backends with Java Spring Boot", "Develop modern frontends with React or Angular", "Master RESTful API design and implementation", "Manage databases using Hibernate and Spring Data JPA"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -346,6 +354,7 @@ export const coursesData = [
     rating: 4.7,
     reviews: '950+',
     fee: 45000,
+    whatYouLearn: ["Develop web backends using Django and Flask", "Create dynamic frontends with modern JS frameworks", "Build and integrate RESTful APIs", "Automate workflows and deploy apps to the cloud"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -387,6 +396,7 @@ export const coursesData = [
     rating: 4.6,
     reviews: '600+',
     fee: 45000,
+    whatYouLearn: ["Master server-side scripting with PHP", "Build dynamic websites with MySQL integration", "Understand Object-Oriented PHP concepts", "Implement web security and session management"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -422,6 +432,7 @@ export const coursesData = [
     rating: 4.9,
     reviews: '1.8k',
     fee: 45000,
+    whatYouLearn: ["Build full-stack apps with MongoDB, Express, React, and Node.js", "Master state management with React Hooks and Context API", "Implement secure JWT-based authentication", "Deploy MERN applications on cloud platforms"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -465,6 +476,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '2.2k',
     fee: 45000,
+    whatYouLearn: ["Master modern web interfaces with React.js", "Understand UI/UX principles and responsive design", "State management with Redux or Context API", "Integrate APIs and manage application routing"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -505,6 +517,7 @@ export const coursesData = [
     rating: 4.7,
     reviews: '1.4k',
     fee: 45000,
+    whatYouLearn: ["Build scalable systems with Node.js, Django, or Spring Boot", "Design and implement RESTful and GraphQL APIs", "Manage SQL and NoSQL databases effectively", "Implement secure authentication and authorization"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -546,6 +559,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '800+',
     fee: 45000,
+    whatYouLearn: ["Deep dive into React 18+ hooks and patterns", "Master complex state and effect management", "Build high-performance single-page applications", "Implement advanced routing and code splitting"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -587,6 +601,7 @@ export const coursesData = [
     rating: 4.7,
     reviews: '550+',
     fee: 45000,
+    whatYouLearn: ["Build enterprise apps with C# and .NET Core", "Develop scalable backends with ASP.NET Web API", "Master Entity Framework Core for data persistence", "Deploy and monitor apps on Microsoft Azure"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -628,6 +643,7 @@ export const coursesData = [
     rating: 4.6,
     reviews: '1.2k',
     fee: 45000,
+    whatYouLearn: ["Build professional websites without coding", "Customize WordPress themes and develop plugins", "Optimize sites for SEO and performance", "Implement robust security and backup strategies"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -670,6 +686,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '1.3k',
     fee: 45000,
+    whatYouLearn: ["Develop native apps for both Android and iOS", "Master Java/Kotlin for Android and Swift for iOS", "Understand mobile UI/UX and material design", "Integrate device sensors and cloud services"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -714,6 +731,7 @@ export const coursesData = [
     rating: 4.9,
     reviews: '1.1k',
     fee: 45000,
+    whatYouLearn: ["Build cross-platform apps from a single codebase", "Master Dart programming and Flutter widgets", "Implement complex animations and state management", "Deploy apps to Google Play Store and Apple App Store"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -756,6 +774,7 @@ export const coursesData = [
     rating: 4.7,
     reviews: '700+',
     fee: 45000,
+    whatYouLearn: ["Build native mobile apps using JavaScript and React", "Master navigation and device API integration", "Implement responsive mobile UI layouts", "Optimize app performance for iOS and Android"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -800,6 +819,7 @@ export const coursesData = [
     rating: 4.9,
     reviews: '400+',
     fee: 45000,
+    whatYouLearn: ["Master Swift and Apple's design principles", "Build professional apps with SwiftUI and UIKit", "Integrate iCloud, Core Data, and device sensors", "Prepare and publish apps to the App Store"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -844,6 +864,7 @@ export const coursesData = [
     rating: 4.8,
     reviews: '1.6k',
     fee: 65000,
+    whatYouLearn: ["Master Excel for advanced data manipulation", "Query and analyze data using SQL", "Build interactive dashboards in Power BI and Tableau", "Generate actionable business insights from data"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -879,6 +900,7 @@ export const coursesData = [
     rating: 4.9,
     reviews: '2.4k',
     fee: 75000,
+    whatYouLearn: ["Perform complex statistical analysis and modeling", "Master machine learning with Scikit-learn", "Create stunning visualizations with Python libraries", "Handle big data and deploy predictive models"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -922,6 +944,7 @@ export const coursesData = [
     mode: 'Self-Paced',
     rating: 4.7,
     fee: 45000,
+    whatYouLearn: ["Transform raw data into beautiful visualizations", "Build interactive and professional dashboards", "Master data storytelling and best practices", "Perform advanced analytics with LOD expressions"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -960,6 +983,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master DAX for complex data calculations", "Build robust data models and relationships", "Create compelling business reports and dashboards", "Publish and share reports in Power BI Service"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -999,6 +1023,7 @@ export const coursesData = [
     mode: 'Instructor-Led',
     rating: 4.9,
     fee: 45000,
+    whatYouLearn: ["Design scalable data warehouses and lakes", "Master ETL/ELT pipeline design and orchestration", "Implement data modeling and governance standards", "Manage cloud-based data platforms (AWS/Azure)"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1037,6 +1062,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.9,
     fee: 45000,
+    whatYouLearn: ["Understand core AI concepts and algorithms", "Build intelligent agents and search systems", "Master Python for AI and machine learning", "Implement NLP and computer vision basics"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1080,6 +1106,7 @@ export const coursesData = [
     mode: 'Instructor-Led',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master supervised and unsupervised ML algorithms", "Evaluate and optimize models for production", "Implement ensemble methods and feature engineering", "Understand ML Ops and model deployment basics"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1285,6 +1312,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master AWS and Azure core cloud services", "Design highly available and scalable architectures", "Implement serverless computing and microservices", "Manage cloud costs and security policies"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1394,6 +1422,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.9,
     fee: 45000,
+    whatYouLearn: ["Perform network and web penetration testing", "Identify vulnerabilities using industry-standard tools", "Master Kali Linux, Metasploit, and Burp Suite", "Implement defensive security measures and reporting"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1437,6 +1466,7 @@ export const coursesData = [
     mode: 'Online',
     rating: 4.7,
     fee: 45000,
+    whatYouLearn: ["Design and secure enterprise network architectures", "Configure firewalls, IDS/IPS, and VPNs", "Monitor network traffic for security threats", "Implement zero-trust security principles"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1480,6 +1510,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master manual testing methodologies and QA", "Automate UI testing with Selenium and TestNG", "Track and report bugs using tools like JIRA", "Ensure software quality standards"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1523,6 +1554,7 @@ export const coursesData = [
     mode: 'Online',
     rating: 4.7,
     fee: 45000,
+    whatYouLearn: ["Test REST and SOAP APIs using Postman", "Automate API testing with Rest Assured", "Integrate tests into CI/CD pipelines", "Master API mocking and security testing"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1566,6 +1598,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.9,
     fee: 45000,
+    whatYouLearn: ["Master user research and design thinking", "Create high-fidelity wireframes and prototypes", "Design professional UI with Figma and Adobe XD", "Conduct usability testing and iterate on designs"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1609,6 +1642,7 @@ export const coursesData = [
     mode: 'Self-Paced',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master Adobe Illustrator, Photoshop, and InDesign", "Create professional branding and identity systems", "Design assets for social media and print", "Understand color theory and visual composition"],
     curriculum: [
       { title: 'Design Foundations', topics: 'Composition, Contrast, Balance' },
       { title: 'Adobe Essentials', topics: 'Photoshop and Illustrator mastery' },
@@ -1632,6 +1666,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.9,
     fee: 45000,
+    whatYouLearn: ["Build 2D and 3D games with Unity and Unreal", "Master C# or C++ for game logic", "Implement game physics, lighting, and AI", "Publish games on PC, mobile, and web"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1675,6 +1710,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master SEO, SEM, and social media marketing", "Run effective paid campaigns on Google and Facebook", "Analyze marketing data with Google Analytics", "Implement content strategy and email marketing"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1718,6 +1754,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Customize Salesforce using Apex and LWC", "Master Flow Builder and process automation", "Design robust data models on the SFDC platform", "Prepare for Salesforce developer certifications"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1761,6 +1798,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Leverage Generative AI in Agile and Scrum", "Use ChatGPT for sprint planning and backlog health", "Automate reporting and stakeholder communication", "Facilitate better retrospectives with AI insights"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,
@@ -1804,6 +1842,7 @@ export const coursesData = [
     mode: 'Hybrid',
     rating: 4.8,
     fee: 45000,
+    whatYouLearn: ["Master Waterfall and Agile methodologies", "Manage project scope, schedule, and budget", "Build and lead high-performance teams", "Use JIRA and other PM tools effectively"],
     instructor: {
       name: 'Amit Kulkarni',
       rating: 4.8,

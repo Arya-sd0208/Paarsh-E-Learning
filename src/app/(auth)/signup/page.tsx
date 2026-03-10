@@ -1,0 +1,215 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { User, Mail, Lock, ArrowRight, Loader2, Eye, EyeOff, Phone } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+
+export default function SignupPage() {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const returnUrl = searchParams.get("returnUrl");
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+
+    const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setError("");
+        setIsLoading(true);
+
+        const form = e.currentTarget;
+        const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+        const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+        const contact = (form.elements.namedItem("contact") as HTMLInputElement).value;
+        const password = (form.elements.namedItem("password") as HTMLInputElement).value;
+
+        // Validation Checks
+        const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
+        const hasNumber = /\d/;
+        const isOnlyLetters = /^[A-Za-z]+$/;
+
+        if (isOnlyLetters.test(password)) {
+            toast.error("Password must contain at least one number and one special character.");
+            setError("Password cannot contain only letters.");
+            setIsLoading(false);
+            return;
+        }
+
+        if (contact.length !== 10) {
+            toast.error("Contact number must be exactly 10 digits.");
+            setError("Contact number must be exactly 10 digits.");
+            setIsLoading(false);
+            return;
+        }
+
+        if (!hasSpecialChar.test(password) || !hasNumber.test(password)) {
+            toast.error("Include at least one number and one special character.");
+            setError("Include at least one number and one special character.");
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+            await axios.post(`${apiUrl}/api/register`, { name, email, contact, password });
+
+            toast.success("Signup successful! Please sign in.");
+            // Pass returnUrl along to signin so it can redirect back after login
+            const signinUrl = returnUrl ? `/signin?returnUrl=${encodeURIComponent(returnUrl)}` : "/signin";
+            router.push(signinUrl);
+        } catch (error: any) {
+            console.error("Signup error:", error);
+            const message = error?.response?.data?.message || "Signup failed. Please try again.";
+            setError(message);
+            toast.error(message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-50 to-blue-50/50 p-4 sm:p-6 lg:p-8 font-body">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-md">
+                <div className="bg-white p-5 sm:p-7 rounded-2xl shadow-xl border border-blue-50">
+                    <div className="flex flex-col items-center mb-4 sm:mb-6">
+                        <div className="relative w-full max-w-[220px] sm:max-w-[260px] aspect-[280/75]">
+                            <Image
+                                src="/images/logo/logo-wide.webp"
+                                alt="Paarsh E-learning"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
+                        <h1 className="text-lg sm:text-xl font-bold text-[#2C4276] mt-2">Sign Up</h1>
+                        <p className="text-gray-500 mt-1 text-center text-sm">
+                            Join Paarsh E-learning today and start your learning journey
+                        </p>
+                    </div>
+
+                    <form onSubmit={handleSignup} className="space-y-3">
+                        {error && (
+                            <div className="bg-red-50 text-red-600 p-2.5 rounded-lg text-sm text-center">
+                                {error}
+                            </div>
+                        )}
+
+                        <div className="space-y-1">
+                            <label className="text-sm font-medium text-gray-700">Full Name</label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#2C4276]/60">
+                                    <User size={18} />
+                                </div>
+                                <input
+                                    name="name"
+                                    type="text"
+                                    placeholder="Full Name"
+                                    className="w-full text-black pl-10 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2C4276] focus:border-transparent transition-all"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-1">
+                            <label className="text-sm font-medium text-gray-700">Email Address</label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#2C4276]/60">
+                                    <Mail size={18} />
+                                </div>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    placeholder="name@example.com"
+                                    className="w-full text-black pl-10 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2C4276] focus:border-transparent transition-all"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-1">
+                            <label className="text-sm font-medium text-gray-700">Contact</label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#2C4276]/60">
+                                    <Phone size={18} />
+                                </div>
+                                <input
+                                    name="contact"
+                                    type="text"
+                                    placeholder="enter 10 digit number"
+                                    className="w-full text-black pl-10 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2C4276] focus:border-transparent transition-all"
+                                    required
+                                    maxLength={10}
+                                    minLength={10}
+                                    onInput={(e: React.FormEvent<HTMLInputElement>) => {
+                                        const target = e.target as HTMLInputElement;
+                                        target.value = target.value.replace(/[^0-9]/g, "");
+                                    }}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-1">
+                            <label className="text-sm font-medium text-gray-700">Password</label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#2C4276]/60">
+                                    <Lock size={18} />
+                                </div>
+                                <input
+                                    name="password"
+                                    type={showPassword ? "text" : "password"}
+                                    placeholder="••••••••"
+                                    className="w-full text-black pl-10 pr-10 py-2 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#2C4276] focus:border-transparent transition-all"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#2C4276] focus:outline-none"
+                                >
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="pt-2">
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full bg-[#2C4276] hover:bg-[#1e2e54] text-white py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all transform hover:scale-[1.01] active:scale-[0.99] shadow-md hover:shadow-lg disabled:opacity-70"
+                            >
+                                {isLoading ? (
+                                    <Loader2 className="animate-spin" size={20} />
+                                ) : (
+                                    <>
+                                        Sign Up <ArrowRight size={20} />
+                                    </>
+                                )}
+                            </button>
+                        </div>
+                    </form>
+
+                    <div className="mt-4 pt-3 border-t border-gray-100 text-center">
+                        <p className="text-gray-600 font-medium text-sm">
+                            Already have an account?{" "}
+                            <Link
+                                href={returnUrl ? `/signin?returnUrl=${encodeURIComponent(returnUrl)}` : "/signin"}
+                                className="text-[#2FA8E1] font-bold hover:underline"
+                            >
+                                Sign in
+                            </Link>
+                        </p>
+                    </div>
+                </div>
+            </motion.div>
+        </div>
+    );
+}

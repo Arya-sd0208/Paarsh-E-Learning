@@ -1,8 +1,12 @@
+// 
+
+
 "use client";
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
+import { validateEmail, validatePhone } from "@/utils/validation";
 
 interface EnrollModalProps {
     isOpen: boolean;
@@ -27,6 +31,17 @@ const EnrollModal = ({ isOpen, onClose, courseName }: EnrollModalProps) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateEmail(formData.email)) {
+            toast.error("Please enter a valid email address.");
+            return;
+        }
+
+        if (!validatePhone(formData.phone)) {
+            toast.error("Please enter a valid 10-digit phone number.");
+            return;
+        }
+
         // Simulate API call
         toast.success(`Thank you! Your inquiry for ${courseName} has been sent successfully.`);
         onClose();
@@ -106,7 +121,7 @@ const EnrollModal = ({ isOpen, onClose, courseName }: EnrollModalProps) => {
                                             placeholder="Mobile number"
                                             className="w-full pl-12 pr-4 py-4 bg-gray-50 dark:bg-gray-800 rounded-2xl border border-transparent focus:border-[#01A0E2]/30 focus:bg-white dark:focus:bg-gray-950 outline-none transition-all font-medium text-gray-700 dark:text-gray-200"
                                             value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, "").slice(0, 10) })}
                                         />
                                     </div>
                                 </div>

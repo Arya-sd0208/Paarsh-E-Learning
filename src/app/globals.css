@@ -42,6 +42,7 @@
 
   --color-primary: #2B4278;
   --color-secondary: #01A0E2;
+  --color-accent: #FF8C00;
   --color-midnight_text: #102d47;
   --color-grey: #668199;
   --color-border: #ccd7e1;
@@ -157,4 +158,36 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2B4278;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #01A0E2;
+}
+
+/* Dark mode support */
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #000f30;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #224767;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #01A0E2;
 }

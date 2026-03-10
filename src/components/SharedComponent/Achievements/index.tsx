@@ -69,16 +69,16 @@ const Index = () => {
     }, []);
 
     return (
-        <section className="py-12 lg:py-24 relative overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/images/achievements/achievements.png')" }}>
-          
+        <section className="py-8 lg:py-16 relative overflow-hidden bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/images/achievements/achievements.png')" }}>
+
             <div className="absolute inset-0 bg-blue-900/40 dark:bg-black/80 backdrop-blur-[2px]"></div>
 
             <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
 
                 <h2 className="
-                    text-3xl
-                    sm:text-4xl
-                    lg:text-5xl
+                    text-2xl
+                    sm:text-3xl
+                    lg:text-4xl
                     font-extrabold
                     text-center
                     text-white
@@ -89,10 +89,10 @@ const Index = () => {
                 </h2>
 
                 <div className="
-                    max-w-3xl
+                    max-w-2xl
                     mx-auto
                     text-center
-                    p-6 sm:p-10
+                    p-3 sm:p-6
                     bg-white/10
                     backdrop-blur-xl
                     rounded-[2rem]
@@ -100,7 +100,7 @@ const Index = () => {
                     shadow-2xl
                     mb-16 lg:mb-20
                 ">
-                    <p className="text-base sm:text-lg text-white font-medium leading-relaxed">
+                    <p className="text-base sm:text-md text-white font-medium leading-relaxed">
                         Paarsh E-Learning is a Start-up based Edutech Company from Pune,
                         Nashik & Surat. We provide career-focused courses for students.
                     </p>
@@ -125,7 +125,7 @@ const Index = () => {
                             className="
                                 bg-transparent
                                 rounded-2xl
-                                p-6 sm:p-8
+                                p-4 sm:p-6
                                 transition
                                 duration-300
                                 hover:-translate-y-2

@@ -280,7 +280,7 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row justify-between gap-8">
 
           <div className="flex-1 text-left lg:max-w-xs">
-            <Link href="/">
+            <Link href="/" className="flex justify-start">
               <Image
                 src={getImgPath("/images/logo/logo-wide.webp")}
                 alt="logo"
@@ -290,12 +290,12 @@ const Footer = () => {
               />
             </Link>
 
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-sm leading-relaxed text-left">
               Paarsh E-Learning is a Start-up based Edutech Company from Pune,
               Nashik & Surat providing career-focused courses.
             </p>
 
-            <ul className="flex items-center gap-4 mt-5">
+            <ul className="flex items-center justify-start gap-4 mt-8 lg:mt-5">
 
               <li>
                 <a
@@ -351,7 +351,7 @@ const Footer = () => {
 
               <li>
                 <a
-                  href="https://www.youtube.com/@paarshinfotech3697"
+                  href="https://www.youtube.com/@PaarshE-learning"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#FF0000] transition duration-300 hover:scale-110"
@@ -366,39 +366,39 @@ const Footer = () => {
           </div>
 
           <div className="flex-1 text-left lg:max-w-xs ml-0 lg:ml-[22%]">
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-white/70 text-sm">
+            <h3 className="text-white font-semibold mb-4 text-left">Quick Links</h3>
+            <ul className="space-y-2 text-white/70 text-sm text-left">
               <li><Link href="/#" className="hover:text-secondary transition">Home</Link></li>
               <li><Link href="/about" className="hover:text-secondary transition">About</Link></li>
               <li><Link href="/Course" className="hover:text-secondary transition">Courses</Link></li>
-              <li><Link href="/blog" className="hover:text-secondary transition">Blog</Link></li>
+              <li><Link href="/blog" className="hover:text-secondary transition">Blogs</Link></li>
               <li><Link href="/inquiry" className="hover:text-secondary transition">Inquiry</Link></li>
               <li><Link href="/contact" className="hover:text-secondary transition">Contact</Link></li>
             </ul>
           </div>
 
           <div className="flex-1 text-left lg:max-w-xs ml-0 lg:ml-[10%]">
-            <h3 className="text-white font-semibold mb-4">Contact</h3>
-            <ul className="space-y-3 text-white/70 text-sm">
-              <li className="flex items-center gap-2 hover:text-secondary transition cursor-pointer">
+            <h3 className="text-white font-semibold mb-4 text-left">Contact</h3>
+            <ul className="space-y-3 text-white/70 text-sm flex flex-col items-start text-left">
+              <li className="flex items-center justify-start gap-2 hover:text-secondary transition cursor-pointer">
                 <svg className="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 5.5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.33.07.72-.21 1.11l-2.2 2.2z" />
                 </svg>
                 +91 90752 01035
               </li>
-              <li className="flex items-center gap-2 hover:text-secondary transition cursor-pointer">
+              <li className="flex items-center justify-start gap-2 hover:text-secondary transition cursor-pointer">
                 <svg className="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C9.16 22 2 14.84 2 5.5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88.15.33.07.72-.21 1.11l-2.2 2.2z" />
                 </svg>
                 +91 98600 98343
               </li>
-              <li className="flex items-center gap-2 hover:text-secondary transition cursor-pointer">
+              <li className="flex items-center justify-start gap-2 hover:text-secondary transition cursor-pointer">
                 <svg className="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm.5 10.5h4v-1h-3V7h-1v5.5z" />
                 </svg>
                 (10:00AM - 06:00PM)
               </li>
-              <li className="flex items-center gap-2 hover:text-secondary transition cursor-pointer">
+              <li className="flex items-center justify-start gap-2 hover:text-secondary transition cursor-pointer">
                 <svg className="w-4 h-4 text-white/70" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 5 8-5v10H4z" />
                 </svg>

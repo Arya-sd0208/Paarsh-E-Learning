@@ -19,36 +19,39 @@ const HeaderLink: React.FC<{ item: HeaderItem }> = ({ item }) => {
 
   return (
     <div
-      className="relative"
+      className="relative group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href={item.href} className={`text-base flex py-2 font-medium hover:text-secondary dark:hover:text-primary text-black dark:text-white  ${path === item.href ? 'text-primary dark:text-primary!' : '  '} ${path.startsWith("/blog") && item.href === "/blog" ? "text-primary! dark:text-primary!" : null} ${path.startsWith("/portfolio") && item.href === "/portfolio" ? "text-primary! dark:text-primary!" : null}`}>
-        {item.label}
+      <Link href={item.href} className={`text-[15px] flex items-center py-2 font-semibold transition-colors duration-300 hover:text-primary dark:hover:text-primary ${path === item.href ? 'text-primary dark:text-primary' : 'text-midnight_text dark:text-gray-300'}`}>
+        <span>{item.label}</span>
         {item.submenu && (
-          <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m7 10l5 5l5-5" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24" className="ml-0.5 opacity-60 group-hover:scale-110 transition-transform">
+            <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m7 10l5 5l5-5" />
           </svg>
         )}
+        {/* Animated Underline */}
+        <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${path === item.href ? 'w-full' : ''}`}></span>
       </Link>
+
       {submenuOpen && (
         <div
-          className={`absolute py-2 left-0 mt-0.5 top-8 w-60 bg-white dark:bg-darklight shadow-lg dark:shadow-dark-md rounded-lg `}
-          data-aos="fade-up"
-          data-aos-duration="400"
+          className="absolute top-full left-0 pt-2 w-56 transform origin-top transition-all"
         >
-          {item.submenu?.map((subItem, index) => (
-            <Link
-              key={index}
-              href={subItem.href}
-              className={`block px-4 py-2 text-base  ${path === subItem.href
-                ? "bg-primary text-white"
-                : "text-black hover:bg-gray-200 dark:hover:bg-midnight_text dark:text-white hover:text-dark dark:hover:text-white"
-                }`}
-            >
-              {subItem.label}
-            </Link>
-          ))}
+          <div className="bg-white dark:bg-darklight shadow-2xl rounded-xl border border-gray-100 dark:border-white/5 overflow-hidden backdrop-blur-xl">
+            {item.submenu?.map((subItem, index) => (
+              <Link
+                key={index}
+                href={subItem.href}
+                className={`block px-5 py-3 text-sm font-medium transition-all duration-200 border-l-2 ${path === subItem.href
+                  ? "bg-primary/5 text-primary border-primary"
+                  : "text-midnight_text dark:text-gray-400 border-transparent hover:bg-gray-50 dark:hover:bg-white/5 hover:text-primary hover:border-primary/40"
+                  }`}
+              >
+                {subItem.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

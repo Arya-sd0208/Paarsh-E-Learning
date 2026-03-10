@@ -42,7 +42,7 @@
 
 // export default BlogDetailPage;
 // app/(site)/Course/[slug]/page.ts
-
+  
 import CourseDetails from "./CourseDetails";
 import { Metadata } from "next";
 import { coursesData } from "@/data/coursesData";

@@ -56,10 +56,10 @@ const AboutPage = () => {
     <>
       <div className="w-full mt-10 text-center bg-white text-primary dark:bg-[#18181b] dark:text-white transition-colors duration-300 relative overflow-hidden">
         <div className="text-center mb-16 md:mb-10 mt-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-blue-950 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-3xl font-extrabold text-blue-950 dark:text-white mb-6">
             About Us
           </h2>
-          <div className="w-24 h-1.5 bg-secondary mx-auto rounded-full" />
+          <div className="w-20 h-1.5 bg-secondary mx-auto rounded-full" />
         </div>
 
         <div className="about-text dark:bg-transparent tracking-tighter mx-auto max-w-6xl relative z-10">

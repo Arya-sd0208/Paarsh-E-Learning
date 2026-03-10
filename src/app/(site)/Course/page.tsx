@@ -40,7 +40,7 @@ const CoursePage = () => {
   }, [searchQuery, activeCategory]);
 
   return (
-    <div className="bg-gray-50 dark:bg-darkmode min-h-screen pb-20 pt-20 md:pt-24">
+    <div className="bg-gray-50 dark:bg-darkmode min-h-screen pb-20 pt-20 md:pt-24 -mt-6">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-900 via-indigo-200 to-white py-20 px-4 overflow-hidden border-b border-gray-100 dark:border-none">
         {/* Background Decorations */}
@@ -50,22 +50,22 @@ const CoursePage = () => {
         </div>
 
         <div className="container mx-auto max-w-4xl relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-blue-950 mb-6 drop-shadow-sm">
+          <h1 className="text-3xl md:text-4xl font-bold text-blue-950 mb-6 drop-shadow-sm -mt-10">
             Our Courses
           </h1>
-          <p className="text-blue-900/70 text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto font-medium">
+          <p className="text-blue-900/70 text-lg md:text-lg mb-10 opacity-90 max-w-2xl mx-auto font-medium">
             Industry-oriented courses designed to build real-world skills and propel your career forward.
           </p>
 
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto relative group">
+          <div className="max-w-md mx-auto relative group">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Icon icon="solar:magnifer-linear" className="text-gray-400 w-6 h-6 group-focus-within:text-blue-500 transition-colors" />
+              <Icon icon="solar:magnifer-linear" className="text-gray-400 w-5 h-5 group-focus-within:text-blue-500 transition-colors" />
             </div>
             <input
               type="text"
-              placeholder="Search courses by name or skill..."
-              className="w-full pl-12 pr-12 py-4 md:py-5 bg-white dark:bg-gray-900 rounded-2xl shadow-xl focus:ring-4 focus:ring-blue-500/20 outline-none text-gray-700 dark:text-gray-200 text-lg transition-all border border-transparent focus:border-blue-500/10"
+              placeholder="Search courses..."
+              className="w-full pl-11 pr-11 py-2.5 md:py-3 bg-white dark:bg-gray-900 rounded-full shadow-lg focus:ring-4 focus:ring-blue-500/10 outline-none text-gray-700 dark:text-gray-200 text-base transition-all border border-gray-100 dark:border-gray-800 focus:border-blue-500/20"
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -88,7 +88,7 @@ const CoursePage = () => {
       </section>
 
       {/* Categories & Filter Tabs */}
-      <section className="container mx-auto max-w-7xl px-4 -mt-8 relative z-20">
+      <section className="container mx-auto max-w-7xl px-4 -mt-24 relative z-20">
         <div className="bg-white dark:bg-gray-900 p-2 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 backdrop-blur-md">
           <div className="flex items-center gap-2 overflow-x-auto py-1 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {categories.map((cat) => (
@@ -110,9 +110,9 @@ const CoursePage = () => {
       </section>
 
       {/* Courses Grid */}
-      <section className="container mx-auto max-w-7xl px-4 -mt-6 pb-20">
+      <section className="container mx-auto max-w-7xl px-4 -mt-20 pb-20">
         {filteredCourses.length > 0 ? (
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {filteredCourses.map((course) => (
               <CourseCard key={course.id} course={course as any} />
             ))}
